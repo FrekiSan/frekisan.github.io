@@ -10,6 +10,9 @@
     text-wrap: balance;
 }
 
+body{
+        cursor:crosshair
+}
 a, a * {
     cursor: pointer !important;
 }
