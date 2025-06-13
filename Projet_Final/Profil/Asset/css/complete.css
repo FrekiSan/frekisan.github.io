@@ -11,7 +11,7 @@
     text-wrap: balance;
 }
 
-a{
+a : hover{
     cursor: pointer;
 }
 
