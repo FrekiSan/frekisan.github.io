@@ -26,6 +26,10 @@ a:hover {
     height: 100%;
 }
 
+.bouton a:hover{
+    cursor:pointer;
+}
+
 audio{
     display: block;
     margin: auto;
