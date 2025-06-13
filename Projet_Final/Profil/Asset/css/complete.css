@@ -11,6 +11,10 @@
     text-wrap: balance;
 }
 
+a{
+    cursor: pointer;
+}
+
 .fond{
     resize: horizontal;
     overflow: auto;
