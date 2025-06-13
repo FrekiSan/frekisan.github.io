@@ -1,0 +1,32 @@
+@font-face {
+    font-family : 'Hyperwave';
+    src: url(../font/Hyperwave.otf) format('truetype')
+}
+
+*{    
+    cursor: crosshair;
+    background-color: black;
+    color : white;
+    touch-action: auto;
+    text-wrap: balance;
+}
+
+.fond{
+    resize: horizontal;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+audio{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+/*je n'ai pas sticky le header et/ou le footer parce que je trouve de base que c'est plus embetant qu'autre chose*/
+/*Ico bug mieux vaux prevenir que guérir 
+@font-face {
+    font-family : 'Hyperwave';
+    src: url(../Index/font/Hyperwave.otf) format('truetype');
+
+font-family: 'Hyperwave', sans-serif;*/

@@ -1,0 +1,50 @@
+/*Text Modif*/
+nav{
+        font-size: 2rem;
+    }
+
+.contact{
+        font-size: 1.7rem;
+    }
+
+
+h1{
+        text-align : center;
+        text-decoration: underline;
+        font-family: 'Hyperwave', sans-serif;
+        font-size: 5rem;
+        text-decoration-color: #faa300;
+    }
+
+h2 {
+        text-decoration: underline;
+        text-decoration-color: #faa300;
+    }  
+
+.Localisation{
+        text-decoration: underline;
+        font-family: 'Hyperwave', sans-serif;
+        font-size: 4rem;
+        text-decoration-color: #faa300;
+    }
+
+/*Fin Texte Modif*/
+
+div{
+        color: black;
+        background-color: black;
+    }
+nav, div{
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
+
+.danse{
+        width: 500px;
+        height:auto;
+    }
+
+footer{
+        text-align: center;
+    }
