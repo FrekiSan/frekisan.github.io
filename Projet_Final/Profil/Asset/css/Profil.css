@@ -271,6 +271,11 @@ ul.site li {
     display: flex;
     flex-direction: row;
     padding-top: 2rem;
+
+        
+a, a:visited, a:active {
+    cursor: pointer !important;
+}
     gap: 5rem;
     justify-content:center;
 }
