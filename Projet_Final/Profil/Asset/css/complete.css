@@ -11,7 +11,7 @@
     text-wrap: balance;
 }
 
-a : hover{
+a, a:visited, a:active {
     cursor: pointer;
 }
 
