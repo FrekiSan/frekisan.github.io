@@ -11,6 +11,10 @@
     text-wrap: balance;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 .doigt, .doigt:hover{
     cursor: pointer !important;
 }
