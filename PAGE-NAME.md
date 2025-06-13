@@ -1,3 +1,3 @@
 layout: page
 title: "Profil"
-permalink: frekisan.github.io/Profil.html
+permalink: Profil.html
