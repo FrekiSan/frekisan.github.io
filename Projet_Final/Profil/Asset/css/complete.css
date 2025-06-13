@@ -11,7 +11,7 @@
     text-wrap: balance;
 }
 
-a, a:visited, a:active {
+a, a:visited, a:active, a.link, a[class*="link"], a:hover{
     cursor: pointer !important;
     
 .fond{
