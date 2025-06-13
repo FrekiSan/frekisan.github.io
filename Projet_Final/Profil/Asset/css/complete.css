@@ -12,9 +12,8 @@
 }
 
 a, a:visited, a:active {
-    cursor: pointer;
-}
-
+    cursor: pointer !important;
+    
 .fond{
     resize: horizontal;
     overflow: auto;
