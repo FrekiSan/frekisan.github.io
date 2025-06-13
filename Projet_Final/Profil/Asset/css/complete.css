@@ -13,6 +13,7 @@
 
 .doigt, .doigt:hover{
     cursor: pointer !important;
+}
     
 .fond{
     resize: horizontal;
