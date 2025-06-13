@@ -274,8 +274,3 @@ ul.site li {
     gap: 5rem;
     justify-content:center;
 }
-
-
-a, a:hover, a *{
-    cursor: pointer !important;
-    
