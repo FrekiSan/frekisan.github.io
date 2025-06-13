@@ -3,14 +3,18 @@
     src: url(../font/Hyperwave.otf) format('truetype')
 }
 
-*{    
+*{  
+    cursor: crosshair;
     background-color: black;
     color : white;
     touch-action: auto;
     text-wrap: balance;
 }
 
-  
+a, a * {
+    cursor: pointer !important;
+}
+
 .fond{
     resize: horizontal;
     overflow: auto;
