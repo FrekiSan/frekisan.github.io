@@ -4,21 +4,13 @@
 }
 
 *{    
-    cursor: crosshair;
     background-color: black;
     color : white;
     touch-action: auto;
     text-wrap: balance;
 }
 
-a:hover {
-  cursor: pointer;
-}
-
-.doigt, .doigt:hover{
-    cursor: pointer !important;
-}
-    
+  
 .fond{
     resize: horizontal;
     overflow: auto;
