@@ -11,7 +11,7 @@
     text-wrap: balance;
 }
 
-a, a:hover, a *{
+.doigt, .doigt:hover{
     cursor: pointer !important;
     
 .fond{
