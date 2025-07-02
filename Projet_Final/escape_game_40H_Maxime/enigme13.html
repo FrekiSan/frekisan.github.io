@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Énigme 13</title>
+  <link rel="icon" href="assets/Images/favicon.ico">
+  <link rel="stylesheet" href="assets/Css/style.css">
+  <link rel="stylesheet" href="assets/Css/responsive.css">
+</head>
+<body>
+  <header>
+    <img src="assets/Images/logo.png" alt="logo" class="logo">
+  <div class="header-links">
+    <a href="#" id="openContact">Contact</a>
+<a href="#" id="openCredits">Crédits</a>
+  </div>
+    <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+  </header>
+
+  <h1>Énigme 13</h1>
+
+  
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZUERx_9H2EE" frameborder="0" allowfullscreen></iframe>
+  
+
+  
+
+  
+    <iframe id="lockee1" src="https://lockee.fr/o/2RX6IBtJ?dark" height="500" style="width:100%;" frameborder="0"></iframe>
+    
+  
+
+  
+    <iframe id="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/pWmBjRYZ8-4" frameborder="0" allowfullscreen style="display:none;"></iframe>
+  
+
+  
+  <script src="assets/Js/app.js"></script>
+  <script src="assets/Js/utilities.js"></script>
+  <script src="assets/Js/manager.js"></script>
+  <script>
+
+  observeLockee("lockee1", () => {
+    const video = document.getElementById("video-histoire");
+    if (video) video.style.display = "block";
+    setTimeout(() => {
+      window.location.href = "enigme14.html";
+    }, 8000);
+  });
+
+</script>
+<!-- 🔲 Overlay général -->
+<div id="modalOverlay" class="modal-overlay"></div>
+
+<!-- 📇 Modal Crédits -->
+<div id="modalCredits" class="modal">
+  <h2>Crédits</h2>
+  <p>Escape Game réalisé par <b>Groom Escape</b> <i>(Yann S. & Maxime "Freki" Orange)</i><br>
+        Coder par <b>Anima'Escape</b> <i>(Maxime "Freki" Orange)</i> <br>
+        Acteur : Hafid D. , Yann S. , Maxime "Freki" Orange <br>
+        <i>Escape réalisé en collaboration avec la ville de Clermont-Ferrand lors de la pandémie, en février 2020 !</i></p>
+</div>
+
+<!-- 📬 Modal Contact -->
+<div id="modalContact" class="modal">
+  <h2>Contact</h2>
+  <form>
+    <input type="text" placeholder="Votre nom" required><br>
+    <input type="email" placeholder="Votre email" required><br>
+    <textarea placeholder="Votre message" required></textarea><br>
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jukebox Rétro - Code Sélecteur</title>
+<link rel="stylesheet" href="Asset/Css/JukeBox.css" />
+</head>
+<body>
+
+  <div id="loading-indicator" class="loading hidden">Chargement du disque...</div>
+<div class="jukebox-container">
+  <h1>Jukebox 50's</h1>
+  <audio id="audio" preload="auto"></audio>
+  <img id="vinyl" src="Asset/image/vinyl.png" alt="Vinyle" class="vinyl hidden">
+
+  <div class="controls">
+    <button id="insert-coin">Insérer une pièce</button>
+    <button id="prev" disabled>⏮️ Précédent</button>
+    <button id="play" disabled>▶️ Play / Pause</button>
+    <button id="next" disabled>⏭️ Suivant</button>
+  </div>
+  <div class="volume-control">
+    <label for="volume">Volume</label>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+  </div>
+ 
+   <ul class="track-list" id="playlist">
+    <li data-src="Asset/music/1_Amour_sous_la_lune.mp3">A1 - Amour sous la lune - Suno</li>
+    <li data-src="Asset/music/2_When_the_Stars_Whisper_Your_Name.mp3">A2 - When the Stars Whisper Your Name - Suno</li>
+    <li data-src="Asset/music/3_Moonlight_Rendezvous.mp3">A3 - Moonlight Rendezvous - Suno</li>
+    <li data-src="Asset/music/4_Whispered_Serenade.mp3">B1 - Whispered Serenade - Suno</li>
+    <li data-src="Asset/music/5_Moonlit_Memories.mp3">B2 - Moonlit Memories - Suno</li>
+    <li data-src="Asset/music/6_Nostalgic_Serenade.mp3">B3 - Nostalgic Serenade - Suno</li>
+    <li data-src="Asset/music/7_Moonlit_Serenade.mp3">C1 - Moonlit Serenade - Suno</li>
+    <li data-src="Asset/music/8_When_The_Saints_Go_Marching_In.mp3">C2 - When The Saints Go Marching In - The InkSpots</li>
+    <li data-src="Asset/music/9_The_Entertainer.mp3">C3 - The Entertainer - Scott Joplin</li>
+    <li data-src="Asset/music/10_St_Louis_Blues.mp3">D1 - St Louis Blues - Ella Fitzgerald & Chick Webb</li>
+    <li data-src="Asset/music/11_Baby_wont_you_please_come_home.mp3">D2 - Baby Won't You Please Come Home</li>
+    <li data-src="Asset/music/12_Glow_Worm.mp3">D3 - Glow Worm - The Miles Brothers</li>
+  </ul>
+
+  <div class="code-selector">
+    <h2>Choisissez votre chanson</h2>
+    <div class="code-buttons">
+      <button data-code="A1" disabled>A1</button>
+      <button data-code="A2" disabled>A2</button>
+      <button data-code="A3" disabled>A3</button>
+      <button data-code="B1" disabled>B1</button>
+      <button data-code="B2" disabled>B2</button>
+      <button data-code="B3" disabled>B3</button>
+      <button data-code="C1" disabled>C1</button>
+      <button data-code="C2" disabled>C2</button>
+      <button data-code="C3" disabled>C3</button>
+      <button data-code="D1" disabled>D1</button>
+      <button data-code="D2" disabled>D2</button>
+      <button data-code="D3" disabled>D3</button>
+    </div>
+  </div>
+</div>
+
+<script src="Asset/Js/JukeBox.js"></script>
+</body>
+</html>
