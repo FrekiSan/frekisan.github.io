@@ -28,16 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
     modalCredits.style.display = "none";
   });
 
-  const logo = document.querySelector(".logo");
-  let pressTimer;
-  logo?.addEventListener("mousedown", () => {
-    pressTimer = setTimeout(() => {
-      window.location.href = "histoire.html";
-    }, 1500);
-  });
-  logo?.addEventListener("mouseup", () => clearTimeout(pressTimer));
-});
-
 function checkAnswer(expected, nextPage) {
   const val = document.getElementById("answer")?.value.toLowerCase().trim();
   if (val === expected.toLowerCase().trim()) {
@@ -63,3 +53,5 @@ function observeLockee(id, callback) {
     observer.observe(target, { childList: true, subtree: true });
   }, 5000);
 }
+
+});

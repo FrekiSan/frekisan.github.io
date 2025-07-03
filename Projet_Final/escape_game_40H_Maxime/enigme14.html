@@ -67,5 +67,33 @@
   </form>
 </div>
 
+<script>
+
+// Easter egg : appui long sur le logo (desktop ET mobile) uniquement sur enigme14.html
+  document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.querySelector(".logo");
+    let pressTimer;
+
+    function startPressTimer() {
+      pressTimer = setTimeout(() => {
+        window.location.href = "histoire.html";
+      }, 1500);
+    }
+    function cancelPressTimer() {
+      clearTimeout(pressTimer);
+    }
+
+    logo?.addEventListener("mousedown", startPressTimer);
+    logo?.addEventListener("mouseup", cancelPressTimer);
+    logo?.addEventListener("mouseleave", cancelPressTimer);
+
+    // Ajout mobile :
+    logo?.addEventListener("touchstart", startPressTimer);
+    logo?.addEventListener("touchend", cancelPressTimer);
+    logo?.addEventListener("touchcancel", cancelPressTimer);
+  });
+  
+</script>
+
 </body>
 </html>
