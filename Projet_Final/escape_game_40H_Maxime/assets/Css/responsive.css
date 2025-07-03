@@ -67,6 +67,10 @@
   .video-grid {
     grid-template-columns: 1fr;
   }
+  .video-grid iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
 
   /* Titre plus petit */
   h1 {
@@ -103,5 +107,5 @@
     height: 220px;
     max-width: 100%;
   }
-  
+
 }

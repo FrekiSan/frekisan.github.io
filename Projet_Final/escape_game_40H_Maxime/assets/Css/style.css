@@ -131,12 +131,22 @@ main {
   height: 500px;
 }
 
-/* Vidéos intégrées */
-iframe {
+/* Grille vidéo histoire */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1100px;
+}
+.video-grid iframe {
   width: 100%;
-  max-width: 100%;
+  aspect-ratio: 16/9;
+  min-width: 0;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  background: #222;
+  display: block;
 }
 
 /* ===== FORMULAIRES ===== */
@@ -251,3 +261,32 @@ button:hover {
 .modal-content a {
   color: #ccc;
 }
+
+
+/*====Start button===*/
+
+.start-link,
+.classement-link {
+  display: inline-block;
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #f39c12 60%, #ffcc00 100%);
+  color: #222;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(243,156,18,0.12);
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.start-link:hover,
+.classement-link:hover {
+  background: linear-gradient(90deg, #ffcc00 60%, #f39c12 100%);
+  color: #111;
+}
+
+iframe {
+  border: none;
+}
+
