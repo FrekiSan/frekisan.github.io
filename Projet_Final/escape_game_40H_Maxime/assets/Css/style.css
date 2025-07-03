@@ -116,37 +116,36 @@ main {
 }
 
 .lockee-container {
+  position: relative;
   width: 100%;
-  max-width: 600px;
-  margin: 2rem auto;
+  padding-bottom: 56.25%; /* ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
+
 .lockee-container iframe {
-  width: 100% !important;
-  min-width: 0;
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-  background: #222;
-  display: block;
-  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* Grille vidéo histoire */
 .video-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin: 2rem auto;
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
 }
+
 .video-grid iframe {
+  aspect-ratio: 16 / 9;
   width: 100%;
-  aspect-ratio: 16/9;
-  min-width: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-  background: #222;
-  display: block;
+  height: auto;
+  border: none;
 }
 
 /* ===== FORMULAIRES ===== */
@@ -270,7 +269,7 @@ button:hover {
   display: inline-block;
   padding: 12px 32px;
   background: linear-gradient(90deg, #f39c12 60%, #ffcc00 100%);
-  color: #222;
+  color: #ffffff;
   font-weight: bold;
   font-size: 1.2em;
   border: none;
@@ -283,7 +282,7 @@ button:hover {
 .start-link:hover,
 .classement-link:hover {
   background: linear-gradient(90deg, #ffcc00 60%, #f39c12 100%);
-  color: #111;
+  color: #ffffff;
 }
 
 iframe {
