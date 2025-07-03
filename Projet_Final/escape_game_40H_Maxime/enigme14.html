@@ -20,14 +20,14 @@
 
   <h1>Énigme 14</h1>
 
-  <div class="video-container">
+  
     <iframe width="560" height="315" src="https://www.youtube.com/embed/NJbUgg3ydrI" frameborder="0" allowfullscreen></iframe>
-  </div>
+  
 
   
     <div>
       <input type="text" id="answer" placeholder="Votre réponse" />
-      <button onclick="checkAnswer('45.17612 3.391014', 'ending.html')">Valider</button>
+      <button onclick="checkAnswer('45.17612 3.391014', 'enigme15.html')">Valider</button>
     </div>
   
 
@@ -66,34 +66,6 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
-
-<script>
-
-// Easter egg : appui long sur le logo (desktop ET mobile) uniquement sur enigme14.html
-  document.addEventListener("DOMContentLoaded", () => {
-    const logo = document.querySelector(".logo");
-    let pressTimer;
-
-    function startPressTimer() {
-      pressTimer = setTimeout(() => {
-        window.location.href = "histoire.html";
-      }, 1500);
-    }
-    function cancelPressTimer() {
-      clearTimeout(pressTimer);
-    }
-
-    logo?.addEventListener("mousedown", startPressTimer);
-    logo?.addEventListener("mouseup", cancelPressTimer);
-    logo?.addEventListener("mouseleave", cancelPressTimer);
-
-    // Ajout mobile :
-    logo?.addEventListener("touchstart", startPressTimer);
-    logo?.addEventListener("touchend", cancelPressTimer);
-    logo?.addEventListener("touchcancel", cancelPressTimer);
-  });
-  
-</script>
 
 </body>
 </html>

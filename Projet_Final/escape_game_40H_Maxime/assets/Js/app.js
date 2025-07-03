@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function checkAnswer(expected, nextPage) {
   const val = document.getElementById("answer")?.value.toLowerCase().trim();
   if (val === expected.toLowerCase().trim()) {
-    const video = document.getElementById("video-histoire");
+    const video = document.getElementsByClassName("video-histoire");
     if (video) video.style.display = "block";
     setTimeout(() => {
       window.location.href = nextPage;

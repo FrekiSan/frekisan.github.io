@@ -6,7 +6,7 @@
 let timerInterval;
 
 function startGlobalTimer() {
-  const timerDisplay = document.getElementById("globalTimer");
+  const timerDisplay = document.getElementById("timer");
   if (!timerDisplay) return;
 
   let startTime = localStorage.getItem("startTime");

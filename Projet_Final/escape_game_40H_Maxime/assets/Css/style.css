@@ -81,11 +81,6 @@ h1 {
 }
 
 /* ===== TIMER ===== */
-#globalTimer {
-  margin-top: 0.5rem;
-  font-weight: bold;
-  color: #ffcc00;
-}
 #timer {
   font-size: 1rem;
   font-weight: bold;
