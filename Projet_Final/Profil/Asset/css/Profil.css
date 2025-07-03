@@ -277,3 +277,13 @@ ul.site li {
     justify-content:center;
 }
 
+/* Centrage de l'image citation */
+.citation {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    height: auto;
+}
