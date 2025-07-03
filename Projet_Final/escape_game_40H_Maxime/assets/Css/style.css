@@ -110,10 +110,25 @@ main {
 }
 
 /* Conteneurs vidéo et lockee */
-.video-container,
-.lockee-container {
+.video-container{
   margin: 2rem auto;
   max-width: 100%;
+}
+
+.lockee-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+.lockee-container iframe {
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+  background: #222;
+  display: block;
+  height: 500px;
 }
 
 /* Vidéos intégrées */
