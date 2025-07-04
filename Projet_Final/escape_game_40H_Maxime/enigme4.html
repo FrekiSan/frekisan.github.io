@@ -7,15 +7,54 @@
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+  <script src="assets/Js/zoneTexteHandler.js" defer></script>
+  <script>
+    function validate() {
+      checkZoneTexteAnswer("code", ["1245"], () => {
+        window.location.href = "enigme5a.html";
+      });
+    }
+  </script>
+    <style>
+    main {
+      text-align: center;
+    }
+    #image {
+      margin: 20px auto;
+    }
+    #input-container {
+      margin: 20px auto;
+    }
+    input[type="text"] {
+      font-size: 1.5em;
+      padding: 10px;
+      width: 150px;
+      text-align: center;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/Images/logo.png" alt="logo" class="logo">
-  <div class="header-links">
-    <a href="#" id="openContact">Contact</a>
-<a href="#" id="openCredits">Crédits</a>
-  </div>
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
   <h1>Énigme 4</h1>
@@ -24,34 +63,33 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ttgl3pu9o80"  allowfullscreen></iframe>
   </div>
 
-  
+    <div id="input-container">
+      <p>Entrez le code :</p>
+      <input type="text" id="code" placeholder="0000">
+      <br>
+      <button onclick="validate()">Valider</button>
+    </div>
 
-  <div class="lockee-container">
-    <iframe id="lockee1" src="https://lockee.fr/o/oa50Z9ML?dark" height="500" style="width:100%;" ></iframe>
-  </div>  
-  
+    <div id="video" style="display:none;">
+      <iframe src="https://www.youtube.com/embed/d3TN-6eL_-M" title="Vidéo Histoire 4"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
 
-  <div class="video-container">
-    <iframe class="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/mZicG3Ccs9Q"  allowfullscreen style="display:none;"></iframe>
-    <iframe class="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/Yseta6WtuwU"  allowfullscreen style="display:none;"></iframe>
-    <iframe class="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/d3TN-6eL_-M"  allowfullscreen style="display:none;"></iframe>
-  </div>
+  <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
+  </footer>
 
 
 <script src="assets/Js/app.js"></script>
 <script src="assets/Js/utilities.js"></script>
 <script src="assets/Js/manager.js"></script>
-<script>
 
-  observeLockee("lockee1", () => {
-    const video = document.getElementById("video-histoire");
-    if (video) video.style.display = "block";
-    setTimeout(() => {
-      window.location.href = "enigme5.html";
-    }, 360000);
-  });
-
-</script>
 <!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
@@ -75,13 +113,6 @@
   </form>
 </div>
 
-<p>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!">
-    </a>
-</p>
 
 </body>
 </html>

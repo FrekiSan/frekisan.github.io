@@ -3,50 +3,38 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Énigme 10</title>
+  <title>Énigme 3</title>
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
-    <script src="assets/Js/pianoHandler.js" defer></script>
+    <script src="assets/Js/codeCouleurHandler.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      setupPiano(["g#", "a#", "g", "d", "d#"], () => {
-                /*Sol#, La#,  Sol,  Ré, Ré#*/ 
-        window.location.href = "enigme11.html";
+      setupColorCode(["vert", "bleu", "jaune", "rouge"], () => {
+        window.location.href = "enigme4.html";
       });
     });
   </script>
-    <style>
+  <style>
     main {
       text-align: center;
     }
-    .key {
+    #color-selector {
+      margin: 20px auto;
+    }
+    .color-slot {
+      width: 60px;
+      height: 60px;
       display: inline-block;
-      width: 50px;
-      height: 150px;
-      margin: 2px;
-      background-color: white;
-      border: 1px solid black;
-      vertical-align: top;
+      margin: 0 10px;
+      border: 2px solid #000;
       cursor: pointer;
-      user-select: none;
-    }
-    .key.black {
-      background-color: black;
-      height: 100px;
-      width: 30px;
-      margin-left: -15px;
-      margin-right: -15px;
-      z-index: 2;
-      position: relative;
-    }
-    .keyboard {
-      display: inline-block;
-      position: relative;
-      margin-top: 20px;
+      background-color: grey;
     }
     button {
       margin-top: 20px;
+      font-size: 1.2em;
+      padding: 10px 20px;
     }
     iframe {
       width: 100%;
@@ -66,19 +54,44 @@
   <a href="classement.html" id="openClassement">Classement</a>
 </div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
-  <h1>Énigme 10</h1>
+  <h1>Énigme 3-2</h1>
 
   <div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y1hpGWgSqvk"  allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/OHbRHf8XoIY"  allowfullscreen></iframe>
   </div>
 
-    <div class="keyboard" id="piano-container"></div>
+
+   <div id="color-palette" style="margin: 1em 0;">
+  <button class="color-btn" style="background:red" onclick="pickColor('rouge')"></button>
+  <button class="color-btn" style="background:orange" onclick="pickColor('orange')"></button>
+  <button class="color-btn" style="background:yellow" onclick="pickColor('jaune')"></button>
+  <button class="color-btn" style="background:green" onclick="pickColor('vert')"></button>
+  <button class="color-btn" style="background:blue" onclick="pickColor('bleu')"></button>
+  <button class="color-btn" style="background:violet" onclick="pickColor('violet')"></button>
+  <button class="color-btn" style="background:indigo" onclick="pickColor('indigo')"></button>
+  <button class="color-btn" style="background:pink" onclick="pickColor('rose')"></button>
+  <button class="color-btn" style="background:brown" onclick="pickColor('marron')"></button>
+  <button class="color-btn" style="background:grey" onclick="pickColor('gris')"></button>
+  <button class="color-btn" style="background:black" onclick="pickColor('noir')"></button>
+  <button class="color-btn" style="background:white; border:1px solid #ccc;" onclick="pickColor('blanc')"></button>
+</div>
+
+    <div id="color-selector">
+      <div class="color-slot" data-index="0"></div>
+      <div class="color-slot" data-index="1"></div>
+      <div class="color-slot" data-index="2"></div>
+      <div class="color-slot" data-index="3"></div>
+      <br>
+        <button onclick="resetColors()">Réinitialiser</button>
+    </div>
 
     <div id="video" style="display:none;">
-      <iframe src="https://www.youtube.com/embed/WqmQ1cvwv-g" title="Vidéo Histoire 10"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/Yseta6WtuwU" title="Vidéo Histoire 3"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
+
     <footer>
     <!--Preuve vérificator-->
     <p>
@@ -88,7 +101,8 @@
                 alt="Valid CSS!">
         </a>
     </p>
-  </footer>
+  </footer>  
+  
 
 <script src="assets/Js/app.js"></script>
 <script src="assets/Js/utilities.js"></script>
@@ -116,7 +130,6 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
-
 
 </body>
 </html>

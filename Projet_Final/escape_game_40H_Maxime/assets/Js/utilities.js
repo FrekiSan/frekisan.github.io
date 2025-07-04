@@ -14,3 +14,9 @@ function formatTime(ms) {
   const seconds = pad(Math.floor((ms % 60000) / 1000));
   return `${minutes}:${seconds}`;
 }
+
+// Reset timer
+document.getElementById("reset-timer-btn")?.addEventListener("click", () => {
+  localStorage.removeItem("startTime");
+  window.location.href = "index.html";
+});

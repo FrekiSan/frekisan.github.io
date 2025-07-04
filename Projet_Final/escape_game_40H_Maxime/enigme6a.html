@@ -3,10 +3,47 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Histoire</title>
+  <title>Énigme 6</title>
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script src="assets/Js/zoneTexteHandler.js" defer></script>
+  <script>
+    function validate() {
+      checkZoneTexteAnswer("answer", ["burano"], () => {
+        window.location.href = "enigme6b.html";
+      });
+    }
+  </script>
+    <style>
+    main {
+      text-align: center;
+    }
+    #image {
+      margin: 20px auto;
+    }
+    #input-container {
+      margin: 20px auto;
+    }
+    input[type="text"] {
+      font-size: 1.2em;
+      padding: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,27 +54,27 @@
   <a href="classement.html" id="openClassement">Classement</a>
 </div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
-    <button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
-  <main>
-    <h1>Vidéos d'histoire</h1>
-    <div class="video-grid">
-      <iframe src='https://www.youtube.com/embed/JeFCmvyLAB0'></iframe>
-      <iframe src='https://www.youtube.com/embed/mZicG3Ccs9Q'></iframe>
-      <iframe src='https://www.youtube.com/embed/Yseta6WtuwU'></iframe>
-      <iframe src='https://www.youtube.com/embed/d3TN-6eL_-M'></iframe>
-      <iframe src='https://www.youtube.com/embed/ciEChQK9rJI'></iframe>
-      <iframe src='https://www.youtube.com/embed/kZ_mxdvRVPY'></iframe>
-      <iframe src='https://www.youtube.com/embed/DNns1BLemBQ'></iframe>
-      <iframe src='https://www.youtube.com/embed/w40LSeIJHWc'></iframe>
-      <iframe src='https://www.youtube.com/embed/WqmQ1cvwv-g'></iframe>
-      <iframe src='https://www.youtube.com/embed/GM5wWWYuuAY'></iframe>
-      <iframe src='https://www.youtube.com/embed/ZjJwaesjlxA'></iframe>
-      <iframe src='https://www.youtube.com/embed/pWmBjRYZ8-4'></iframe>
-      <a href ="enigme14.html">Fuyez pauvre fou!</a>
-    </div>
-  </main>
 
+  <h1>Énigme 6</h1>
+
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Nl0TQYk00aQ"  allowfullscreen></iframe>
+  </div>
+
+
+    <div id="input-container">
+      <p>Entrez votre réponse :</p>
+      <input type="text" id="answer" placeholder="Réponse">
+      <br>
+      <button onclick="validate()">Valider</button>
+    </div>
+
+     <div id="video" style="display:none;">
+      <img src="assets/Images/Lockee/Image_fin_enigme_2-3-5-6/ImageFiniEnigme6-1_Maisons-Colorées_jpg.jpg">
+      </div>
+    
     <footer>
     <!--Preuve vérificator-->
     <p>
@@ -48,11 +85,12 @@
         </a>
     </p>
   </footer>
-  
-  <script src="assets/Js/app.js"></script>
-  <script src="assets/Js/utilities.js"></script>
-  <script src="assets/Js/manager.js"></script>
-  <!-- 🔲 Overlay général -->
+
+
+<script src="assets/Js/app.js"></script>
+<script src="assets/Js/utilities.js"></script>
+<script src="assets/Js/manager.js"></script>
+<!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
 <!-- 📇 Modal Crédits -->
@@ -74,6 +112,7 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
+
 
 </body>
 </html>

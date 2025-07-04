@@ -7,15 +7,43 @@
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script src="assets/Js/flecheDirectionHandler.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      setupFleches(["gauche", "bas", "droite", "haut", "gauche"], () => {
+        window.location.href = "enigme6a.html";
+      });
+    });
+  </script>
+    <style>
+    main {
+      text-align: center;
+    }
+    .arrow-button {
+      font-size: 2em;
+      padding: 15px 30px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/Images/logo.png" alt="logo" class="logo">
-  <div class="header-links">
-    <a href="#" id="openContact">Contact</a>
-<a href="#" id="openCredits">Crédits</a>
-  </div>
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
   <h1>Énigme 5</h1>
@@ -24,13 +52,30 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/9aZGmRbL8RQ"  allowfullscreen></iframe>
   </div>
 
-  
+    <div id="sequence-affichee" style="margin: 1em 0; font-size: 1.3em; font-weight: bold;color:#f39c12;"></div>
+    <div id="arrows">
+      <button class="arrow-button" onclick="addDirection('haut')">↑</button><br>
+      <button class="arrow-button" onclick="addDirection('gauche')">←</button>
+      <button class="arrow-button" onclick="addDirection('bas')">↓</button>
+      <button class="arrow-button" onclick="addDirection('droite')">→</button><br>
+      <button onclick="validateFleches()">Valider</button>
+      <button onclick="resetFleches()">Réinitialiser</button>
+    </div>
 
-  <div class="lockee-container">
-    <iframe id="lockee1" src="https://lockee.fr/o/DX2DfIM9?dark" height="500" style="width:100%;" ></iframe>
-    
-      <iframe id="second-lockee" src="https://lockee.fr/o/KQCA2Gpc?dark" height="500" style="width:100%; display:none;" ></iframe>
-  </div>  
+    <div id="video" style="display:none;">
+      <iframe src="https://www.youtube.com/embed/ciEChQK9rJI" title="Vidéo Histoire 5"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
+  </footer>
   
 
 <script src="assets/Js/app.js"></script>
@@ -73,13 +118,6 @@
   </form>
 </div>
 
-<p>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!">
-    </a>
-</p>
 
 </body>
 </html>

@@ -7,15 +7,63 @@
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script src="assets/Js/ordreClicHandler.js" defer></script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  setupOrdreClic(["z5", "z2", "z1", "z4", "z7", "z3", "z6", "z9"], () => {
+    window.location.href = "enigme1.html";
+  });
+});
+  </script>
+    <style>
+    .intro-container {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+
+    .click-zone {
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: border 0.2s;
+    }
+    .click-zone:hover {
+      border: 2px dashed rgba(255, 255, 255, 0.5);
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/Images/logo.png" alt="logo" class="logo">
-  <div class="header-links">
-    <a href="#" id="openContact">Contact</a>
-<a href="#" id="openCredits">Crédits</a>
-  </div>
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+    <button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
   <h1>Énigme INTRO</h1>
@@ -23,31 +71,34 @@
   
     <iframe width="560" height="315" src="https://www.youtube.com/embed/eKAW8QDZoaQ?si=HocZ_PZiuiDeQESn" allowfullscreen></iframe>
   
-
-  
-
-  
-    <iframe id="lockee1" src="https://lockee.fr/o/9wNa36CU?dark" height="500" style="width:100%;"></iframe>
-    
-  
-
-  
-
+<div class="intro-grid">
+  <div id="z1" class="click-zone" onclick="handleClick('z1')"></div>
+  <div id="z2" class="click-zone" onclick="handleClick('z2')"></div>
+  <div id="z3" class="click-zone" onclick="handleClick('z3')"></div>
+  <div id="z4" class="click-zone" onclick="handleClick('z4')"></div>
+  <div id="z5" class="click-zone" onclick="handleClick('z5')"></div>
+  <div id="z6" class="click-zone" onclick="handleClick('z6')"></div>
+  <div id="z7" class="click-zone" onclick="handleClick('z7')"></div>
+  <div id="z8" class="click-zone" onclick="handleClick('z8')"></div>
+  <div id="z9" class="click-zone" onclick="handleClick('z9')"></div>
+</div>
 
   <script src="assets/Js/app.js"></script>
   <script src="assets/Js/utilities.js"></script>
   <script src="assets/Js/manager.js"></script>
-<script>
 
-  observeLockee("lockee1", () => {
-    const video = document.getElementById("video-histoire");
-    if (video) video.style.display = "block";
-    setTimeout(() => {
-      window.location.href = "enigme1.html";
-    }, 8000);
-  });
+  <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
 
-</script>
+  </footer>
+
 <!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
@@ -70,14 +121,6 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
-
-<p>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!">
-    </a>
-</p>
 
 </body>
 </html>

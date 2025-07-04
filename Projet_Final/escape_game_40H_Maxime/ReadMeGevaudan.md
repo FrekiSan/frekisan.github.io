@@ -18,6 +18,10 @@ Contenu de l'archive :
 	- manager.js : Gère les états globaux (timer, stockage)
   	- classement.js : gère l'enregistrement et l'affichage du classement des joueurs
 
+	+ les Handlers des exercices qui remplaces TOUS les Lockee (car non fonctionnel)...
+
+Disponible sur mon PortFolio : https://frekisan@github.io (https://frekisan.github.io/Projet_Final/escape_game_40H_Maxime/index.html pour accéder directement a l'escape)
+
 Bienvenue dans cette chasse a l'homme ou le temps presse! Deux personnes sont retenue captive au beau millieu de l'Auvergne, les rumeurs dans le coins disent que la bête du Gévaudan serait de retour...
 Alors mythe ou réalite, à vous de le découvrir mais hatez vous car leurs vies est entre vos mains !
 

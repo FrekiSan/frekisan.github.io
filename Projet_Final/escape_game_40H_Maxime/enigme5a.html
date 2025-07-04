@@ -3,20 +3,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Énigme 14</title>
+  <title>Énigme 5</title>
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
-    <script src="assets/Js/zoneTexteHandlerNoDelay.js" defer></script>
+    <script src="assets/Js/zoneTexteHandler.js" defer></script>
   <script>
     function validate() {
-      checkZoneTexteAnswer("answer", [
-        "45.17612 3.391014", 
-        "45.1 76 12 3.39 10 14", 
-        "45.176123.391014",
-        "45.17612,3.391014"
-      ], () => {
-        window.location.href = "ending.html";
+      checkZoneTexteAnswer("answer", ["матрёшка"], () => {
+        window.location.href = "enigme5b.html";
       });
     }
   </script>
@@ -41,6 +36,13 @@
       padding: 10px 20px;
       margin-top: 10px;
     }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
   </style>
 </head>
 <body>
@@ -52,23 +54,25 @@
   <a href="classement.html" id="openClassement">Classement</a>
 </div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
-    <button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
-  <h1>Énigme 14</h1>
+  <h1>Énigme 5</h1>
 
-  
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/NJbUgg3ydrI" allowfullscreen></iframe>
-
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9aZGmRbL8RQ"  allowfullscreen></iframe>
+  </div>
 
     <div id="input-container">
-      <p>Entrez la réponse :</p>
-      <input type="text" id="answer" placeholder="Coordonnées ou valeurs">
+      <p>Entrez votre réponse :</p>
+      <input type="text" id="answer" placeholder="Réponse">
       <br>
       <button onclick="validate()">Valider</button>
     </div>
 
-      <p class="hint">Entendez-vous le loup hurler? Peut-être serais-ce judicieux de le caresser quelques instant...</p>
+     <div id="video" style="display:none;">
+      <img src="assets/Images/Lockee/Image_fin_enigme_2-3-5-6/ImageFinalEnigme5-1_Poupées-Russe_.jpg">
+      </div>
 
     <footer>
     <!--Preuve vérificator-->
@@ -81,14 +85,24 @@
     </p>
   </footer>
   
-  <script src="assets/Js/app.js"></script>
-  <script src="assets/Js/utilities.js"></script>
-  <script src="assets/Js/manager.js"></script>
 
+<script src="assets/Js/app.js"></script>
+<script src="assets/Js/utilities.js"></script>
+<script src="assets/Js/manager.js"></script>
 <script>
 
-</script>
+  observeLockee("lockee1", () => {
+    document.getElementById("second-lockee").style.display = "block";
+    observeLockee("second-lockee", () => {
+      const video = document.getElementById("video-histoire");
+      if (video) video.style.display = "block";
+      setTimeout(() => {
+        window.location.href = "enigme6.html";
+      }, 120000);
+    });
+  });
 
+</script>
 <!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 

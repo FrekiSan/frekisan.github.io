@@ -7,15 +7,54 @@
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script src="assets/Js/zoneTexteHandler.js" defer></script>
+  <script>
+    function validate() {
+      checkZoneTexteAnswer("answer", ["1868"], () => {
+        window.location.href = "enigme2a.html";
+      });
+    }
+  </script>
+  <style>
+    main {
+      text-align: center;
+    }
+    #image {
+      margin: 20px auto;
+    }
+    #input-container {
+      margin: 20px auto;
+    }
+    input[type="text"] {
+      font-size: 1.2em;
+      padding: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/Images/logo.png" alt="logo" class="logo">
-  <div class="header-links">
-    <a href="#" id="openContact">Contact</a>
-<a href="#" id="openCredits">Crédits</a>
-  </div>
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
   <h1>Énigme 1</h1>
@@ -24,26 +63,21 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/_sMcRx6h7iA"  allowfullscreen></iframe>
   </div>
 
-  
-    <div>
-      <input type="text" id="answer" placeholder="Votre réponse">
-      <button onclick="checkAnswer('1868', 'enigme2.html')">Valider</button>
+    <div id="input-container">
+      <p>Entrez votre réponse :</p>
+      <input type="text" id="answer" placeholder="Réponse">
+      <br>
+      <button onclick="validate()">Valider</button>
     </div>
-  
 
-  
-
-  <div class="video-container">
-    <iframe class="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/JeFCmvyLAB0"  allowfullscreen style="display:none;"></iframe>
-  </div>
-
+    <div id="video" style="display:none;">
+      <iframe src="https://www.youtube.com/embed/JeFCmvyLAB0" title="Vidéo Histoire"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
 
 <script src="assets/Js/app.js"></script>
 <script src="assets/Js/utilities.js"></script>
 <script src="assets/Js/manager.js"></script>
-<script>
 
-</script>
 <!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
@@ -56,6 +90,17 @@
         <i>Escape réalisé en collaboration avec la ville de Clermont-Ferrand lors de la pandémie, en février 2020 !</i></p>
 </div>
 
+  <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
+  </footer>
+
 <!-- 📬 Modal Contact -->
 <div id="modalContact" class="modal">
   <h2>Contact</h2>
@@ -66,14 +111,6 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
-
-<p>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!">
-    </a>
-</p>
 
 </body>
 </html>

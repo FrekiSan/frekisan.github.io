@@ -7,14 +7,60 @@
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script>
+    function validate() {
+      const val1 = document.getElementById("input1").value.trim().toLowerCase();
+      const val2 = document.getElementById("input2").value.trim().toLowerCase();
+      const val3 = document.getElementById("input3").value.trim().toLowerCase();
+      if (val1 === "troie" && val2 === "achille" && val3 === "sarpedon") {
+        document.getElementById("error").style.display = "none";
+        document.getElementById("video").style.display = "block";
+        setTimeout(() => {
+          window.location.href = "enigme10.html";
+        }, 8000);
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+  </script>
+    <style>
+    main {
+      text-align: center;
+    }
+    input[type="text"] {
+      font-size: 1.2em;
+      padding: 5px;
+      margin: 0 5px;
+      width: 120px;
+      text-align: center;
+    }
+    button {
+      font-size: 1em;
+      margin-top: 15px;
+      padding: 10px 20px;
+    }
+    #error {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/Images/logo.png" alt="logo" class="logo">
-  <div class="header-links">
-    <a href="#" id="openContact">Contact</a>
-<a href="#" id="openCredits">Crédits</a>
-  </div>
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
   </header>
 
@@ -24,26 +70,30 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/KwTUga6c8dI?dark"  allowfullscreen></iframe>
   </div>
 
-  
-    <div>
-      <input type="text" id="answer" placeholder="Votre réponse">
-      <button onclick="checkAnswer('TROIE ACHILLE SARPEDON', 'enigme10.html')">Valider</button>
+     <p>Au cours du siège de <input type="text" id="input1" placeholder="O">, revêtu de l'armure de <input type="text" id="input2" placeholder="o">, j'ai vaincu <input type="text" id="input3" placeholder="°">.</p>
+
+    <button onclick="validate()">Valider</button>
+    <div id="error">Mauvaise réponse, réessayez.</div>
+
+    <div id="video" style="display:none;">
+      <iframe src="https://www.youtube.com/embed/w40LSeIJHWc" title="Vidéo Histoire 9"  allow="autoplay; encrypted-media" allowfullscreen></iframe> 
     </div>
-  
-
-  
-
-  <div class="video-container">
-    <iframe class="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/w40LSeIJHWc"  allowfullscreen style="display:none;"></iframe>
-  </div>
+  <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
+  </footer>
 
 
 <script src="assets/Js/app.js"></script>
 <script src="assets/Js/utilities.js"></script>
 <script src="assets/Js/manager.js"></script>
-<script>
 
-</script>
 <!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
@@ -67,13 +117,6 @@
   </form>
 </div>
 
-<p>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!">
-    </a>
-</p>
 
 </body>
 </html>

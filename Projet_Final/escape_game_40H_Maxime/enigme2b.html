@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Énigme 2</title>
+  <link rel="icon" href="assets/Images/favicon.ico">
+  <link rel="stylesheet" href="assets/Css/style.css">
+  <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script>
+    const correctStates = [1, 1, 1, 0,
+                           0, 1, 0, 1,
+                           0, 1, 0, 0,
+                           1, 1, 0, 0];
+    let switches = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      switches = Array.from(document.querySelectorAll(".switch"));
+      switches.forEach((el, i) => {
+        el.addEventListener("click", () => toggleSwitch(i));
+      });
+    });
+
+    function toggleSwitch(index) {
+      const el = switches[index];
+      const current = el.dataset.state === "1" ? 1 : 0;
+      const newState = current === 1 ? 0 : 1;
+      el.dataset.state = newState;
+      el.textContent = newState;
+    }
+
+    function validate() {
+      const userState = switches.map(sw => parseInt(sw.dataset.state || "0"));
+      const correct = correctStates.every((val, idx) => val === userState[idx]);
+      if (correct) {
+        const board = document.querySelector(".switch-board");
+        if (board) board.style.display = "none";
+        document.getElementById("video").style.display = "block";
+        setTimeout(() => {
+          window.location.href = "enigme3a.html";
+        }, 12000);
+      } else {
+        alert("Mauvaise combinaison !");
+      }
+    }
+  </script>
+    <style>
+    main {
+      text-align: center;
+    }
+    .switch {
+      display: inline-block;
+      margin: 10px;
+      width: 60px;
+      height: 60px;
+      font-size: 2em;
+      line-height: 60px;
+      background-color: #222;
+      color: white;
+      border: 2px solid #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+    .switch-board {
+      margin: 30px 0;
+    }
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/Images/logo.png" alt="logo" class="logo">
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
+    <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+<button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
+  </header>
+
+  <h1>Énigme 2</h1>
+
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Lh2aguSO2Qs"  allowfullscreen></iframe>
+  </div>
+
+    <div class="switch-board">
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div><br>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div><Br>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div><br>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <div class="switch" data-state="0">0</div>
+      <br>
+      <button onclick="validate()">Valider</button>
+    </div>
+
+    <div id="video" style="display:none;">
+      <iframe src="https://www.youtube.com/embed/mZicG3Ccs9Q" title="Vidéo Histoire 2"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
+  </footer> 
+
+
+<script src="assets/Js/app.js"></script>
+<script src="assets/Js/utilities.js"></script>
+<script src="assets/Js/manager.js"></script>
+
+<!-- 🔲 Overlay général -->
+<div id="modalOverlay" class="modal-overlay"></div>
+
+<!-- 📇 Modal Crédits -->
+<div id="modalCredits" class="modal">
+  <h2>Crédits</h2>
+  <p>Escape Game réalisé par <b>Groom Escape</b> <i>(Yann S. & Maxime "Freki" Orange)</i><br>
+        Coder par <b>Anima'Escape</b> <i>(Maxime "Freki" Orange)</i> <br>
+        Acteur : Hafid D. , Yann S. , Maxime "Freki" Orange <br>
+        <i>Escape réalisé en collaboration avec la ville de Clermont-Ferrand lors de la pandémie, en février 2020 !</i></p>
+</div>
+
+<!-- 📬 Modal Contact -->
+<div id="modalContact" class="modal">
+  <h2>Contact</h2>
+  <form>
+    <input type="text" placeholder="Votre nom" required><br>
+    <input type="email" placeholder="Votre email" required><br>
+    <textarea placeholder="Votre message" required></textarea><br>
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+
+</body>
+</html>

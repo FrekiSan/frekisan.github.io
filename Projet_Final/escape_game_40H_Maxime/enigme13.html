@@ -7,15 +7,93 @@
   <link rel="icon" href="assets/Images/favicon.ico">
   <link rel="stylesheet" href="assets/Css/style.css">
   <link rel="stylesheet" href="assets/Css/responsive.css">
+    <script>
+    const correctOrder = ["c4", "c3", "c7", "c5", "c8", "c2", "c6", "c9", "c1"];
+    let currentIndex = 0;
+
+    function handleClick(id) {
+      if (id === correctOrder[currentIndex]) {
+        document.getElementById(id).style.border = "2px solid lime";
+        currentIndex++;
+        if (currentIndex === correctOrder.length) {
+          document.getElementById("image-container").style.display = "none";
+          document.getElementById("success").style.display = "block";
+          setTimeout(() => {
+            window.location.href = "enigme14.html";
+          }, 5000);
+        }
+      } else {
+        alert("Mauvais ordre ! Réessayez.");
+        resetClicks();
+      }
+    }
+
+    function resetClicks() {
+      currentIndex = 0;
+      document.querySelectorAll('.clickable').forEach(el => {
+        el.style.border = "2px solid transparent";
+      });
+    }
+  </script>
+    <style>
+    main {
+      text-align: center;
+    }
+    .intro-container {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+ .clickable {
+  position: absolute;
+  width: 20%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: rgba(207, 207, 207, 0.5);
+  border: 2px solid black;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.clickable:hover {
+  border: 2px dashed rgb(0, 214, 36);
+}
+
+    #success {
+      display: none;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      display: block;
+      margin: 20px auto;
+    }
+
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/Images/logo.png" alt="logo" class="logo">
-  <div class="header-links">
-    <a href="#" id="openContact">Contact</a>
-<a href="#" id="openCredits">Crédits</a>
-  </div>
+<div class="header-links">
+  <a href="#" id="openContact">Contact</a>
+  <a href="#" id="openCredits">Crédits</a>
+  <a href="classement.html" id="openClassement">Classement</a>
+</div>
     <div id="timer">⏱️ Temps : <span id="time">00:00</span></div>
+    <button id="reset-timer-btn" class="reset-btn">Réinitialiser le timer</button>
   </header>
 
   <h1>Énigme 13</h1>
@@ -24,32 +102,37 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ZUERx_9H2EE" allowfullscreen></iframe>
   </div>
 
-  
+<div id="image-container" style="position: relative; width: 300px; height: 300px; margin: auto;">
+  <div id="c1" class="clickable" onclick="handleClick('c1')" style="top: 0%; left: 0%;"></div>
+  <div id="c2" class="clickable" onclick="handleClick('c2')" style="top: 0%; left: 40%;"></div>
+  <div id="c3" class="clickable" onclick="handleClick('c3')" style="top: 0%; left: 80%;"></div>
 
-  <div class="lockee-container">
-    <iframe id="lockee1" src="https://lockee.fr/o/2RX6IBtJ?dark" height="500" style="width:100%;"></iframe>
-  </div>  
-  
+  <div id="c4" class="clickable" onclick="handleClick('c4')" style="top: 40%; left: 0%;"></div>
+  <div id="c5" class="clickable" onclick="handleClick('c5')" style="top: 40%; left: 40%;"></div>
+  <div id="c6" class="clickable" onclick="handleClick('c6')" style="top: 40%; left: 80%;"></div>
 
-  <div class="video-container">
-    <iframe class="video-histoire" width="560" height="315" src="https://www.youtube.com/embed/pWmBjRYZ8-4" allowfullscreen style="display:none;"></iframe>
-  </div>
+  <div id="c7" class="clickable" onclick="handleClick('c7')" style="top: 80%; left: 0%;"></div>
+  <div id="c8" class="clickable" onclick="handleClick('c8')" style="top: 80%; left: 40%;"></div>
+  <div id="c9" class="clickable" onclick="handleClick('c9')" style="top: 80%; left: 80%;"></div>
+</div>
+    <div id="success">
+      <iframe src="https://www.youtube.com/embed/pWmBjRYZ8-4" title="Vidéo Histoire 13"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+    <footer>
+    <!--Preuve vérificator-->
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!">
+        </a>
+    </p>
+  </footer>
   
   <script src="assets/Js/app.js"></script>
   <script src="assets/Js/utilities.js"></script>
   <script src="assets/Js/manager.js"></script>
-  <script>
 
-  observeLockee("lockee1", () => {
-    const video = document.getElementById("video-histoire");
-    if (video) video.style.display = "block";
-    setTimeout(() => {
-      window.location.href = "enigme14.html";
-    }, 120000);
-  });
-
-</script>
 <!-- 🔲 Overlay général -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
@@ -73,13 +156,6 @@
   </form>
 </div>
 
-<p>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!">
-    </a>
-</p>
 
 </body>
 </html>
