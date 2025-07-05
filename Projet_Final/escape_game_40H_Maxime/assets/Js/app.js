@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("modalOverlay");
   const modalContact = document.getElementById("modalContact");
   const modalCredits = document.getElementById("modalCredits");
-
+  const modalClassements = document.getElementById("modalClassements");
+  
   document.getElementById("openContact")?.addEventListener("click", (e) => {
     e.preventDefault();
     overlay.style.display = "block";
@@ -17,6 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("openCredits")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    overlay.style.display = "block";
+    modalCredits.style.display = "block";
+  });
+
+  document.getElementById("openClassements")?.addEventListener("click", (e) => {
     e.preventDefault();
     overlay.style.display = "block";
     modalCredits.style.display = "block";
@@ -39,6 +46,32 @@ function checkAnswer(expected, nextPage) {
   }
 }
 
+  function loadClassement() {
+  const tableau = document.querySelector("#classementTable tbody");
+  tableau.innerHTML = "";
+
+  let scores = JSON.parse(localStorage.getItem("classement")) || [];
+
+  scores.sort((a, b) => a.time - b.time);
+
+  scores.forEach((entry, index) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${entry.name}</td>
+      <td>${formatTime(entry.time)}</td>
+    `;
+    tableau.appendChild(tr);
+  });
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}m ${secs.toString().padStart(2, '0')}s`;
+}
+
+  
 function observeLockee(id, callback) {
   const target = document.getElementById(id);
   if (!target) return;
