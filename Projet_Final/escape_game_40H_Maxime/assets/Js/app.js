@@ -64,7 +64,8 @@ function checkAnswer(expected, nextPage) {
 
     li.innerHTML = `<strong>${index + 1}.</strong> ${entry.name} — ${formatTime(entry.time)}`;
     list.appendChild(li);
-  }
+  });
+}
   
 function observeLockee(id, callback) {
   const target = document.getElementById(id);
