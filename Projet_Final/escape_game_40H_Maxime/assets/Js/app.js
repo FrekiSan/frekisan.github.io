@@ -55,22 +55,16 @@ function checkAnswer(expected, nextPage) {
   scores.sort((a, b) => a.time - b.time);
 
   scores.forEach((entry, index) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${index + 1}</td>
-      <td>${entry.name}</td>
-      <td>${formatTime(entry.time)}</td>
-    `;
-    tableau.appendChild(tr);
-  });
-}
+    const li = document.createElement("li");
 
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}m ${secs.toString().padStart(2, '0')}s`;
-}
+    // Attribution des classes selon la position
+    if (index === 0) li.classList.add("gold");
+    else if (index === 1) li.classList.add("silver");
+    else if (index === 2) li.classList.add("bronze");
 
+    li.innerHTML = `<strong>${index + 1}.</strong> ${entry.name} — ${formatTime(entry.time)}`;
+    list.appendChild(li);
+  }
   
 function observeLockee(id, callback) {
   const target = document.getElementById(id);
