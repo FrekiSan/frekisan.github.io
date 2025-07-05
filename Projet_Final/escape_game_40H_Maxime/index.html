@@ -14,7 +14,7 @@
 <div class="header-links">
   <a href="#" id="openContact">Contact</a>
   <a href="#" id="openCredits">Crédits</a>
-  <a href="classement.html" id="openClassement">Classement</a>
+  <a href="#" onclick="openModal('classementModal')">Classement</a>
 </div>
   </header>
   <main>
@@ -58,6 +58,17 @@
     <textarea placeholder="Votre message" required></textarea><br>
     <button type="submit">Envoyer</button>
   </form>
+</div>
+
+<!-- Modal Classement -->
+  <div id="classementModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('classementModal')">&times;</span>
+    <h2>Classement</h2>
+    <ul id="classementList" class="leaderboard">
+      <!-- Rempli dynamiquement -->
+    </ul>
+  </div>
 </div>
 
 
