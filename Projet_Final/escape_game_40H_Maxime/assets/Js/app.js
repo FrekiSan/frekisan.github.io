@@ -66,6 +66,30 @@ function checkAnswer(expected, nextPage) {
     list.appendChild(li);
   });
 }
+
+  function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}m ${secs.toString().padStart(2, '0')}s`;
+}
+
+function enregistrerEtOuvrirClassement() {
+  const pseudo = document.getElementById("pseudoInput").value.trim();
+  if (!pseudo) {
+    alert("Merci de saisir votre pseudo !");
+    return;
+  }
+
+  const debut = parseInt(localStorage.getItem("startTime") || "0");
+  const maintenant = Math.floor(Date.now() / 1000);
+  const temps = maintenant - debut;
+
+  let scores = JSON.parse(localStorage.getItem("classement")) || [];
+  scores.push({ name: pseudo, time: temps });
+  localStorage.setItem("classement", JSON.stringify(scores));
+
+  openModal('classementModal');
+}
   
 function observeLockee(id, callback) {
   const target = document.getElementById(id);
