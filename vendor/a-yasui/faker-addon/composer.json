@@ -1,0 +1,34 @@
+{
+  "name": "a-yasui/faker-addon",
+  "description": "Add Ext Provider",
+  "type": "library",
+  "require": {
+    "php": ">=7.4|^8.0",
+    "ext-mbstring": "*",
+    "fakerphp/faker": "^1.24|^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5.26",
+    "symfony/var-dumper": "^5.4.48"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Ayasui\\FakerAddon\\Provider\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ayasui\\FakerAddon\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "atsushi yasui",
+      "email": "a.yasui@gmail.com"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  }
+}
