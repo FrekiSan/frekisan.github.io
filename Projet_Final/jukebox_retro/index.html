@@ -67,29 +67,5 @@
 </p>
 
 <script src="Asset/Js/JukeBox.js"></script>
-<script src="Asset/Js/jukebox.manifest-adapter.js"></script>
-<script>
-  // ⚠️ Mets bien l’URL EXACTE (casse comprise) de ton manifest GitHub Pages :
-  // Exemple si ton repo est Jukebox_Song :
-  // https://frekisan.github.io/Jukebox_Song/manifest.json
-  JukeboxFusion.init({
-    manifestUrl: "https://frekisan.github.io/Jukebox_Song/manifest.json",
-    selectors: {
-      audio: "#audio",           // ton <audio id="audio">
-      prev: "#prev",             // bouton précédent
-      play: "#play",             // bouton play/pause
-      next: "#next",             // bouton suivant
-      playlist: "#playlist"      // ta <ul id="playlist" class="track-list">
-      // (optionnel) pour ajouter des boutons de contrôle supplémentaires :
-      // shuffle: ".btn-shuffle",
-      // repeat: ".btn-repeat",
-      // progress: ".progress",
-      // nowPlaying: ".now-playing",
-      // currentTime: ".time-current",
-      // duration: ".time-duration"
-    },
-    startIndex: 0
-  });
-</script>
 </body>
 </html>
