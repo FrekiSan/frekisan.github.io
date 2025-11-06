@@ -16,10 +16,19 @@
     <header>
      <a href="index.html" class="doigt"><img src="Projet_Final/Profil/Asset/img/fond2.png" alt="fond texte" class="fond"></a>
     </header>
-        <audio controls preload="auto">
-            <source src="Projet_Final/Profil/Asset/music/intro.mp3" type="audio/mpeg">
-            <source src="Projet_Final/Profil/Asset/music/intro.ogg" type="audio/ogg">
-        </audio>
+        <div class="audio-player">
+            <button type="button" class="audio-play-pause" aria-label="Lecture">
+                <span class="play-icon" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                <span class="pause-icon" aria-hidden="true"><i class="fa-solid fa-pause"></i></span>
+            </button>
+            <div class="audio-progress" role="progressbar" aria-label="Progression de la lecture" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+                <div class="audio-progress-bar"></div>
+            </div>
+            <audio preload="auto">
+                <source src="Projet_Final/Profil/Asset/music/intro.mp3" type="audio/mpeg">
+                <source src="Projet_Final/Profil/Asset/music/intro.ogg" type="audio/ogg">
+            </audio>
+        </div>
                 <h1>Maxime "Freki" Orange</h1>
         <details>
             <Summary>Liste Non Exhaustive :</Summary>
@@ -138,5 +147,81 @@
             </a>
         </p>        
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const player = document.querySelector('.audio-player');
+
+            if (!player) {
+                return;
+            }
+
+            const audio = player.querySelector('audio');
+            const playPauseButton = player.querySelector('.audio-play-pause');
+            const progress = player.querySelector('.audio-progress');
+            const progressBar = player.querySelector('.audio-progress-bar');
+
+            function updatePlayState() {
+                if (audio.paused) {
+                    playPauseButton.classList.remove('is-playing');
+                    playPauseButton.setAttribute('aria-label', 'Lecture');
+                } else {
+                    playPauseButton.classList.add('is-playing');
+                    playPauseButton.setAttribute('aria-label', 'Pause');
+                }
+            }
+
+            function updateProgress() {
+                if (!audio.duration || !isFinite(audio.duration)) {
+                    return;
+                }
+
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${percent}%`;
+                const currentTime = isFinite(audio.currentTime) ? audio.currentTime.toFixed(1) : '0';
+                progress.setAttribute('aria-valuenow', currentTime);
+            }
+
+            playPauseButton.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            });
+
+            audio.addEventListener('play', updatePlayState);
+            audio.addEventListener('pause', updatePlayState);
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('loadedmetadata', function () {
+                if (isFinite(audio.duration)) {
+                    progress.setAttribute('aria-valuemax', audio.duration.toFixed(1));
+                }
+                updateProgress();
+            });
+            audio.addEventListener('ended', function () {
+                audio.currentTime = 0;
+                updateProgress();
+                updatePlayState();
+            });
+
+            progress.addEventListener('click', function (event) {
+                if (!audio.duration || !isFinite(audio.duration)) {
+                    return;
+                }
+
+                const rect = progress.getBoundingClientRect();
+                const clickPosition = (event.clientX - rect.left) / rect.width;
+                audio.currentTime = clickPosition * audio.duration;
+                updateProgress();
+            });
+
+            if (audio.readyState >= 1 && isFinite(audio.duration)) {
+                progress.setAttribute('aria-valuemax', audio.duration.toFixed(1));
+                updateProgress();
+            }
+
+            updatePlayState();
+        });
+    </script>
 </body>
 </html>

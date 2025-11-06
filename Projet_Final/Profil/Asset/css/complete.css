@@ -28,10 +28,73 @@ a, a * {
     cursor:pointer;
 }
 
-audio{
-    display: block;
-    margin: auto;
-    text-align: center;
+.audio-player{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 420px;
+}
+
+.audio-player audio{
+    display: none;
+}
+
+.audio-play-pause{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid #8D4FFF;
+    background: transparent;
+    color: #8D4FFF;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.audio-play-pause i{
+    pointer-events: none;
+}
+
+.audio-play-pause:hover,
+.audio-play-pause:focus{
+    transform: scale(1.05);
+    background: rgba(141, 79, 255, 0.15);
+    outline: none;
+}
+
+.audio-play-pause .pause-icon{
+    display: none;
+}
+
+.audio-play-pause.is-playing .play-icon{
+    display: none;
+}
+
+.audio-play-pause.is-playing .pause-icon{
+    display: inline;
+}
+
+.audio-progress{
+    position: relative;
+    flex: 1;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: rgba(141, 79, 255, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.audio-progress-bar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: #8D4FFF;
+    transition: width 0.1s linear;
 }
 /*je n'ai pas sticky le header et/ou le footer parce que je trouve de base que c'est plus embetant qu'autre chose*/
 /*Ico bug mieux vaux prevenir que guérir 
