@@ -1,0 +1,2650 @@
+{
+  "excel": {
+    "columns": [
+      {
+        "table": "users",
+        "column": "id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "YES",
+        "unique": "NO",
+        "default": "AUTO_INCREMENT",
+        "description": "Identifiant"
+      },
+      {
+        "table": "users",
+        "column": "email",
+        "type": "VARCHAR(255)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "YES",
+        "default": "Login email (case-insensitive par collation ci)",
+        "description": ""
+      },
+      {
+        "table": "users",
+        "column": "pseudo",
+        "type": "VARCHAR(50)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "YES",
+        "default": "Pseudo unique (case-insensitive par collation ci)",
+        "description": ""
+      },
+      {
+        "table": "users",
+        "column": "password_hash",
+        "type": "VARCHAR(255)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Hash argon2id/bcrypt",
+        "description": ""
+      },
+      {
+        "table": "users",
+        "column": "created_at",
+        "type": "TIMESTAMP",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "description": "Création (UTC)"
+      },
+      {
+        "table": "users",
+        "column": "rgpd_consented_at",
+        "type": "TIMESTAMP",
+        "null": "YES",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Date consentement RGPD (UTC)",
+        "description": ""
+      },
+      {
+        "table": "puzzles",
+        "column": "id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "YES",
+        "unique": "NO",
+        "default": "AUTO_INCREMENT",
+        "description": "Identifiant"
+      },
+      {
+        "table": "puzzles",
+        "column": "position",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "YES",
+        "default": "Ordre d'affichage (>0)",
+        "description": ""
+      },
+      {
+        "table": "puzzles",
+        "column": "title",
+        "type": "VARCHAR(255)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Titre énigme",
+        "description": ""
+      },
+      {
+        "table": "puzzles",
+        "column": "youtube_main_id",
+        "type": "VARCHAR(32)",
+        "null": "YES",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "ID YouTube principale",
+        "description": ""
+      },
+      {
+        "table": "puzzles",
+        "column": "youtube_story_id",
+        "type": "VARCHAR(32)",
+        "null": "YES",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "ID YouTube histoire",
+        "description": ""
+      },
+      {
+        "table": "puzzles",
+        "column": "image_b_url",
+        "type": "TEXT",
+        "null": "YES",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Image utile pour la part B",
+        "description": ""
+      },
+      {
+        "table": "puzzle_answers",
+        "column": "position",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "FK puzzles(position)",
+        "description": ""
+      },
+      {
+        "table": "puzzle_answers",
+        "column": "part",
+        "type": "CHAR(1)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "''",
+        "description": "Partie: '' (vide), 'a', 'b'"
+      },
+      {
+        "table": "puzzle_answers",
+        "column": "expected_answer_hash",
+        "type": "CHAR(64)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "SHA-256(normalized)",
+        "description": ""
+      },
+      {
+        "table": "puzzle_answers",
+        "column": "expected_answer_plain",
+        "type": "TEXT",
+        "null": "YES",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Optionnel: audit interne",
+        "description": ""
+      },
+      {
+        "table": "puzzle_answers",
+        "column": "PRIMARY KEY (position, part)",
+        "type": "Clé primaire composite",
+        "null": "",
+        "pk": "",
+        "unique": "",
+        "default": "",
+        "description": ""
+      },
+      {
+        "table": "runs",
+        "column": "id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "YES",
+        "unique": "NO",
+        "default": "AUTO_INCREMENT",
+        "description": "Identifiant"
+      },
+      {
+        "table": "runs",
+        "column": "user_id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "FK users(id)",
+        "description": "Joueur"
+      },
+      {
+        "table": "runs",
+        "column": "started_at",
+        "type": "TIMESTAMP",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "description": "Début (UTC)"
+      },
+      {
+        "table": "runs",
+        "column": "finished_at",
+        "type": "TIMESTAMP",
+        "null": "YES",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Fin (UTC)",
+        "description": ""
+      },
+      {
+        "table": "runs",
+        "column": "total_time_seconds",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "0",
+        "description": "Somme puzzle_times (0..7200)"
+      },
+      {
+        "table": "puzzle_times",
+        "column": "id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "YES",
+        "unique": "NO",
+        "default": "AUTO_INCREMENT",
+        "description": "Identifiant"
+      },
+      {
+        "table": "puzzle_times",
+        "column": "run_id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "FK runs(id)",
+        "description": "Run"
+      },
+      {
+        "table": "puzzle_times",
+        "column": "puzzle_id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "FK puzzles(id)",
+        "description": "Énigme"
+      },
+      {
+        "table": "puzzle_times",
+        "column": "part",
+        "type": "CHAR(1)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "''",
+        "description": "Partie: ''/a/b"
+      },
+      {
+        "table": "puzzle_times",
+        "column": "elapsed_seconds",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Temps sur l'énigme (s)",
+        "description": ""
+      },
+      {
+        "table": "puzzle_times",
+        "column": "completed_at",
+        "type": "TIMESTAMP",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "description": "Horodatage (UTC)"
+      },
+      {
+        "table": "leaderboard (VIEW)",
+        "column": "user_id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "ID utilisateur",
+        "description": ""
+      },
+      {
+        "table": "leaderboard (VIEW)",
+        "column": "run_id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "ID de la run",
+        "description": ""
+      },
+      {
+        "table": "leaderboard (VIEW)",
+        "column": "pseudo",
+        "type": "VARCHAR(50)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Pseudo joueur",
+        "description": ""
+      },
+      {
+        "table": "leaderboard (VIEW)",
+        "column": "total_time_seconds",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Temps total (s)",
+        "description": ""
+      },
+      {
+        "table": "leaderboard (VIEW)",
+        "column": "started_at_paris",
+        "type": "TIMESTAMP",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Début (Europe/Paris)",
+        "description": ""
+      },
+      {
+        "table": "leaderboard (VIEW)",
+        "column": "finished_at_paris",
+        "type": "TIMESTAMP",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Fin (Europe/Paris)",
+        "description": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "pseudo",
+        "type": "VARCHAR(50)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "FK users(pseudo)",
+        "description": "Pseudo du joueur"
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "best_time_seconds",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Meilleur temps total (s)",
+        "description": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "best_time_hms",
+        "type": "VARCHAR(8)",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Meilleur temps HH:MM:SS",
+        "description": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "best_run_id",
+        "type": "BIGINT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "ID de la run correspondante",
+        "description": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "best_finished_at_paris",
+        "type": "TIMESTAMP",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Date/heure de fin (Europe/Paris)",
+        "description": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "runs_completed",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Nombre de runs terminées",
+        "description": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "column": "rank",
+        "type": "INT UNSIGNED",
+        "null": "NO",
+        "pk": "NO",
+        "unique": "NO",
+        "default": "Rang global (ex aequo = même rang)",
+        "description": ""
+      }
+    ],
+    "tables": [
+      {
+        "table": "leaderboard (VIEW)",
+        "columns_count": "6",
+        "pk_cols": "",
+        "unique_cols": ""
+      },
+      {
+        "table": "leaderboard_players (VIEW)",
+        "columns_count": "7",
+        "pk_cols": "",
+        "unique_cols": ""
+      },
+      {
+        "table": "puzzle_answers",
+        "columns_count": "5",
+        "pk_cols": "",
+        "unique_cols": ""
+      },
+      {
+        "table": "puzzle_times",
+        "columns_count": "6",
+        "pk_cols": "id",
+        "unique_cols": ""
+      },
+      {
+        "table": "puzzles",
+        "columns_count": "6",
+        "pk_cols": "id",
+        "unique_cols": "position"
+      },
+      {
+        "table": "runs",
+        "columns_count": "5",
+        "pk_cols": "id",
+        "unique_cols": ""
+      },
+      {
+        "table": "users",
+        "columns_count": "6",
+        "pk_cols": "id",
+        "unique_cols": "email, pseudo"
+      }
+    ]
+  },
+  "ods": {
+    "fields": {
+      "header": [
+        "table",
+        "field",
+        "data_type",
+        "PrimaryKey",
+        "ForeignKey_ref",
+        "unique",
+        "nullable",
+        "default",
+        "indexed",
+        "description"
+      ],
+      "rows": [
+        [
+          "players",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant joueur (UUID v4)"
+        ],
+        [
+          "players",
+          "nickname",
+          "varchar(32)",
+          "",
+          "",
+          "YES",
+          "NO",
+          "",
+          "",
+          "Pseudo unique"
+        ],
+        [
+          "players",
+          "email",
+          "varchar(255)",
+          "",
+          "",
+          "YES",
+          "YES",
+          "",
+          "",
+          "E-mail (optionnel)"
+        ],
+        [
+          "players",
+          "avatar_url",
+          "varchar(255)",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "URL de l'avatar"
+        ],
+        [
+          "players",
+          "consent_gdpr",
+          "boolean",
+          "",
+          "",
+          "",
+          "NO",
+          "False",
+          "",
+          "Consentement RGPD"
+        ],
+        [
+          "players",
+          "created_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Création (UTC)"
+        ],
+        [
+          "players",
+          "updated_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Dernière mise à jour (UTC)"
+        ],
+        [
+          "story_videos",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant vidéo d'histoire"
+        ],
+        [
+          "story_videos",
+          "title",
+          "varchar(120)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Titre"
+        ],
+        [
+          "story_videos",
+          "youtube_id",
+          "varchar(32)",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "ID YouTube (si hébergée)"
+        ],
+        [
+          "story_videos",
+          "path",
+          "varchar(255)",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Chemin fichier (local/CDN)"
+        ],
+        [
+          "story_videos",
+          "display_after_success",
+          "boolean",
+          "",
+          "",
+          "",
+          "NO",
+          "True",
+          "",
+          "Afficher après succès de l'énigme"
+        ],
+        [
+          "story_videos",
+          "autoredirect_next_ms",
+          "int",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Délai auto redirection (ms)"
+        ],
+        [
+          "puzzles",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant énigme"
+        ],
+        [
+          "puzzles",
+          "story_video_id",
+          "uuid",
+          "",
+          "story_videos.id",
+          "",
+          "YES",
+          "",
+          "",
+          "Vidéo d'histoire associée"
+        ],
+        [
+          "puzzles",
+          "next_puzzle_id",
+          "uuid",
+          "",
+          "puzzles.id",
+          "",
+          "YES",
+          "",
+          "",
+          "Prochaine énigme (chaînage)"
+        ],
+        [
+          "puzzles",
+          "code",
+          "varchar(32)",
+          "",
+          "",
+          "YES",
+          "NO",
+          "",
+          "",
+          "Code unique ex: ENIGME_08"
+        ],
+        [
+          "puzzles",
+          "title",
+          "varchar(120)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Titre de l'énigme"
+        ],
+        [
+          "puzzles",
+          "type",
+          "enum",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Type de gameplay (lock, input_text, image_interactive, sequence, drag_drop, combinaison, autre)"
+        ],
+        [
+          "puzzles",
+          "order_index",
+          "int",
+          "",
+          "",
+          "YES",
+          "NO",
+          "",
+          "",
+          "Ordre d'apparition"
+        ],
+        [
+          "puzzles",
+          "is_active",
+          "boolean",
+          "",
+          "",
+          "",
+          "NO",
+          "True",
+          "",
+          "Activation"
+        ],
+        [
+          "puzzles",
+          "success_image_path",
+          "varchar(255)",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Image de réussite"
+        ],
+        [
+          "puzzles",
+          "base_image_path",
+          "varchar(255)",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Image de base / canvas"
+        ],
+        [
+          "puzzles",
+          "created_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Création (UTC)"
+        ],
+        [
+          "puzzles",
+          "updated_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Dernière mise à jour (UTC)"
+        ],
+        [
+          "puzzle_assets",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant asset"
+        ],
+        [
+          "puzzle_assets",
+          "puzzle_id",
+          "uuid",
+          "",
+          "puzzles.id",
+          "",
+          "NO",
+          "",
+          "YES",
+          "FK énigme"
+        ],
+        [
+          "puzzle_assets",
+          "kind",
+          "enum",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "image|audio|video|json|sprite|tilemap"
+        ],
+        [
+          "puzzle_assets",
+          "path",
+          "varchar(255)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Chemin/URL"
+        ],
+        [
+          "puzzle_assets",
+          "metadata",
+          "jsonb",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Métadonnées (dimensions, hotspots, etc.)"
+        ],
+        [
+          "puzzle_assets",
+          "created_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Création (UTC)"
+        ],
+        [
+          "game_sessions",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant session de jeu"
+        ],
+        [
+          "game_sessions",
+          "player_id",
+          "uuid",
+          "",
+          "players.id",
+          "",
+          "NO",
+          "",
+          "YES",
+          "FK joueur"
+        ],
+        [
+          "game_sessions",
+          "session_code",
+          "char(8)",
+          "",
+          "",
+          "YES",
+          "NO",
+          "",
+          "",
+          "Code session"
+        ],
+        [
+          "game_sessions",
+          "status",
+          "enum",
+          "",
+          "",
+          "",
+          "NO",
+          "running",
+          "",
+          "running|paused|finished|aborted"
+        ],
+        [
+          "game_sessions",
+          "started_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Début (UTC)"
+        ],
+        [
+          "game_sessions",
+          "finished_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Fin (UTC)"
+        ],
+        [
+          "game_sessions",
+          "total_time_ms",
+          "bigint",
+          "",
+          "",
+          "",
+          "NO",
+          "0",
+          "",
+          "Temps total (ms)"
+        ],
+        [
+          "game_sessions",
+          "current_puzzle_order",
+          "int",
+          "",
+          "",
+          "",
+          "NO",
+          "1",
+          "",
+          "Ordre de l'énigme courante"
+        ],
+        [
+          "game_sessions",
+          "created_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Création (UTC)"
+        ],
+        [
+          "game_sessions",
+          "updated_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Dernière mise à jour (UTC)"
+        ],
+        [
+          "attempts",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant tentative"
+        ],
+        [
+          "attempts",
+          "session_id",
+          "uuid",
+          "",
+          "game_sessions.id",
+          "",
+          "NO",
+          "",
+          "YES",
+          "FK session"
+        ],
+        [
+          "attempts",
+          "puzzle_id",
+          "uuid",
+          "",
+          "puzzles.id",
+          "",
+          "NO",
+          "",
+          "YES",
+          "FK énigme"
+        ],
+        [
+          "attempts",
+          "input_value",
+          "varchar(255)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Entrée fournie par le joueur"
+        ],
+        [
+          "attempts",
+          "is_success",
+          "boolean",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Tentative réussie ?"
+        ],
+        [
+          "attempts",
+          "attempted_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "YES",
+          "Horodatage tentative (UTC)"
+        ],
+        [
+          "attempts",
+          "latency_ms",
+          "int",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Latence entre affichage et tentative (ms)"
+        ],
+        [
+          "solutions",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant solution"
+        ],
+        [
+          "solutions",
+          "puzzle_id",
+          "uuid",
+          "",
+          "puzzles.id",
+          "YES",
+          "NO",
+          "",
+          "",
+          "FK énigme (unique)"
+        ],
+        [
+          "solutions",
+          "answer_hash",
+          "char(64)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "SHA-256 de la réponse"
+        ],
+        [
+          "solutions",
+          "hint_strategy",
+          "jsonb",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Stratégie d'indices (paliers temps/essais)"
+        ],
+        [
+          "solutions",
+          "validation_rules",
+          "jsonb",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Règles: regex, casse, tolérance Levenshtein"
+        ],
+        [
+          "solutions",
+          "created_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Création (UTC)"
+        ],
+        [
+          "solutions",
+          "updated_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Dernière mise à jour (UTC)"
+        ],
+        [
+          "hints",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant indice"
+        ],
+        [
+          "hints",
+          "puzzle_id",
+          "uuid",
+          "",
+          "puzzles.id",
+          "",
+          "NO",
+          "",
+          "YES",
+          "FK énigme"
+        ],
+        [
+          "hints",
+          "order_index",
+          "int",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Ordre d'apparition"
+        ],
+        [
+          "hints",
+          "content_html",
+          "text",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Contenu riche (HTML autorisé)"
+        ],
+        [
+          "hints",
+          "unlock_rule",
+          "jsonb",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Règle d'ouverture (temps/essais)"
+        ],
+        [
+          "leaderboard_entries",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant classement"
+        ],
+        [
+          "leaderboard_entries",
+          "player_id",
+          "uuid",
+          "",
+          "players.id",
+          "",
+          "NO",
+          "",
+          "YES",
+          "FK joueur"
+        ],
+        [
+          "leaderboard_entries",
+          "total_time_ms",
+          "bigint",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "YES",
+          "Temps total (ms)"
+        ],
+        [
+          "leaderboard_entries",
+          "completed_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Fin de partie (UTC)"
+        ],
+        [
+          "achievements",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant succès"
+        ],
+        [
+          "achievements",
+          "code",
+          "varchar(32)",
+          "",
+          "",
+          "YES",
+          "NO",
+          "",
+          "",
+          "Code unique"
+        ],
+        [
+          "achievements",
+          "label",
+          "varchar(120)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Libellé"
+        ],
+        [
+          "achievements",
+          "criteria",
+          "jsonb",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Critères de déblocage"
+        ],
+        [
+          "session_achievements",
+          "session_id",
+          "uuid",
+          "YES",
+          "game_sessions.id",
+          "",
+          "NO",
+          "",
+          "",
+          "PK/FK session"
+        ],
+        [
+          "session_achievements",
+          "achievement_id",
+          "uuid",
+          "YES",
+          "achievements.id",
+          "",
+          "NO",
+          "",
+          "",
+          "PK/FK succès"
+        ],
+        [
+          "audit_logs",
+          "id",
+          "uuid",
+          "YES",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Identifiant log"
+        ],
+        [
+          "audit_logs",
+          "actor",
+          "varchar(64)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Origine: system|admin|player:{id}"
+        ],
+        [
+          "audit_logs",
+          "action",
+          "varchar(64)",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "",
+          "Action ex: PUZZLE_VALIDATED"
+        ],
+        [
+          "audit_logs",
+          "payload",
+          "jsonb",
+          "",
+          "",
+          "",
+          "YES",
+          "",
+          "",
+          "Données associées"
+        ],
+        [
+          "audit_logs",
+          "occurred_at",
+          "datetime",
+          "",
+          "",
+          "",
+          "NO",
+          "",
+          "YES",
+          "Horodatage (UTC)"
+        ]
+      ],
+      "records": [
+        {
+          "table": "players",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant joueur (UUID v4)"
+        },
+        {
+          "table": "players",
+          "field": "nickname",
+          "data_type": "varchar(32)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "YES",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Pseudo unique"
+        },
+        {
+          "table": "players",
+          "field": "email",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "YES",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "E-mail (optionnel)"
+        },
+        {
+          "table": "players",
+          "field": "avatar_url",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "URL de l'avatar"
+        },
+        {
+          "table": "players",
+          "field": "consent_gdpr",
+          "data_type": "boolean",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "False",
+          "indexed": "",
+          "description": "Consentement RGPD"
+        },
+        {
+          "table": "players",
+          "field": "created_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Création (UTC)"
+        },
+        {
+          "table": "players",
+          "field": "updated_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Dernière mise à jour (UTC)"
+        },
+        {
+          "table": "story_videos",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant vidéo d'histoire"
+        },
+        {
+          "table": "story_videos",
+          "field": "title",
+          "data_type": "varchar(120)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Titre"
+        },
+        {
+          "table": "story_videos",
+          "field": "youtube_id",
+          "data_type": "varchar(32)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "ID YouTube (si hébergée)"
+        },
+        {
+          "table": "story_videos",
+          "field": "path",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Chemin fichier (local/CDN)"
+        },
+        {
+          "table": "story_videos",
+          "field": "display_after_success",
+          "data_type": "boolean",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "True",
+          "indexed": "",
+          "description": "Afficher après succès de l'énigme"
+        },
+        {
+          "table": "story_videos",
+          "field": "autoredirect_next_ms",
+          "data_type": "int",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Délai auto redirection (ms)"
+        },
+        {
+          "table": "puzzles",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant énigme"
+        },
+        {
+          "table": "puzzles",
+          "field": "story_video_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "story_videos.id",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Vidéo d'histoire associée"
+        },
+        {
+          "table": "puzzles",
+          "field": "next_puzzle_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "puzzles.id",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Prochaine énigme (chaînage)"
+        },
+        {
+          "table": "puzzles",
+          "field": "code",
+          "data_type": "varchar(32)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "YES",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Code unique ex: ENIGME_08"
+        },
+        {
+          "table": "puzzles",
+          "field": "title",
+          "data_type": "varchar(120)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Titre de l'énigme"
+        },
+        {
+          "table": "puzzles",
+          "field": "type",
+          "data_type": "enum",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Type de gameplay (lock, input_text, image_interactive, sequence, drag_drop, combinaison, autre)"
+        },
+        {
+          "table": "puzzles",
+          "field": "order_index",
+          "data_type": "int",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "YES",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Ordre d'apparition"
+        },
+        {
+          "table": "puzzles",
+          "field": "is_active",
+          "data_type": "boolean",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "True",
+          "indexed": "",
+          "description": "Activation"
+        },
+        {
+          "table": "puzzles",
+          "field": "success_image_path",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Image de réussite"
+        },
+        {
+          "table": "puzzles",
+          "field": "base_image_path",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Image de base / canvas"
+        },
+        {
+          "table": "puzzles",
+          "field": "created_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Création (UTC)"
+        },
+        {
+          "table": "puzzles",
+          "field": "updated_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Dernière mise à jour (UTC)"
+        },
+        {
+          "table": "puzzle_assets",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant asset"
+        },
+        {
+          "table": "puzzle_assets",
+          "field": "puzzle_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "puzzles.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "FK énigme"
+        },
+        {
+          "table": "puzzle_assets",
+          "field": "kind",
+          "data_type": "enum",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "image|audio|video|json|sprite|tilemap"
+        },
+        {
+          "table": "puzzle_assets",
+          "field": "path",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Chemin/URL"
+        },
+        {
+          "table": "puzzle_assets",
+          "field": "metadata",
+          "data_type": "jsonb",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Métadonnées (dimensions, hotspots, etc.)"
+        },
+        {
+          "table": "puzzle_assets",
+          "field": "created_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Création (UTC)"
+        },
+        {
+          "table": "game_sessions",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant session de jeu"
+        },
+        {
+          "table": "game_sessions",
+          "field": "player_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "players.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "FK joueur"
+        },
+        {
+          "table": "game_sessions",
+          "field": "session_code",
+          "data_type": "char(8)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "YES",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Code session"
+        },
+        {
+          "table": "game_sessions",
+          "field": "status",
+          "data_type": "enum",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "running",
+          "indexed": "",
+          "description": "running|paused|finished|aborted"
+        },
+        {
+          "table": "game_sessions",
+          "field": "started_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Début (UTC)"
+        },
+        {
+          "table": "game_sessions",
+          "field": "finished_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Fin (UTC)"
+        },
+        {
+          "table": "game_sessions",
+          "field": "total_time_ms",
+          "data_type": "bigint",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "0",
+          "indexed": "",
+          "description": "Temps total (ms)"
+        },
+        {
+          "table": "game_sessions",
+          "field": "current_puzzle_order",
+          "data_type": "int",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "1",
+          "indexed": "",
+          "description": "Ordre de l'énigme courante"
+        },
+        {
+          "table": "game_sessions",
+          "field": "created_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Création (UTC)"
+        },
+        {
+          "table": "game_sessions",
+          "field": "updated_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Dernière mise à jour (UTC)"
+        },
+        {
+          "table": "attempts",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant tentative"
+        },
+        {
+          "table": "attempts",
+          "field": "session_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "game_sessions.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "FK session"
+        },
+        {
+          "table": "attempts",
+          "field": "puzzle_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "puzzles.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "FK énigme"
+        },
+        {
+          "table": "attempts",
+          "field": "input_value",
+          "data_type": "varchar(255)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Entrée fournie par le joueur"
+        },
+        {
+          "table": "attempts",
+          "field": "is_success",
+          "data_type": "boolean",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Tentative réussie ?"
+        },
+        {
+          "table": "attempts",
+          "field": "attempted_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "Horodatage tentative (UTC)"
+        },
+        {
+          "table": "attempts",
+          "field": "latency_ms",
+          "data_type": "int",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Latence entre affichage et tentative (ms)"
+        },
+        {
+          "table": "solutions",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant solution"
+        },
+        {
+          "table": "solutions",
+          "field": "puzzle_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "puzzles.id",
+          "unique": "YES",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "FK énigme (unique)"
+        },
+        {
+          "table": "solutions",
+          "field": "answer_hash",
+          "data_type": "char(64)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "SHA-256 de la réponse"
+        },
+        {
+          "table": "solutions",
+          "field": "hint_strategy",
+          "data_type": "jsonb",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Stratégie d'indices (paliers temps/essais)"
+        },
+        {
+          "table": "solutions",
+          "field": "validation_rules",
+          "data_type": "jsonb",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Règles: regex, casse, tolérance Levenshtein"
+        },
+        {
+          "table": "solutions",
+          "field": "created_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Création (UTC)"
+        },
+        {
+          "table": "solutions",
+          "field": "updated_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Dernière mise à jour (UTC)"
+        },
+        {
+          "table": "hints",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant indice"
+        },
+        {
+          "table": "hints",
+          "field": "puzzle_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "puzzles.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "FK énigme"
+        },
+        {
+          "table": "hints",
+          "field": "order_index",
+          "data_type": "int",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Ordre d'apparition"
+        },
+        {
+          "table": "hints",
+          "field": "content_html",
+          "data_type": "text",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Contenu riche (HTML autorisé)"
+        },
+        {
+          "table": "hints",
+          "field": "unlock_rule",
+          "data_type": "jsonb",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Règle d'ouverture (temps/essais)"
+        },
+        {
+          "table": "leaderboard_entries",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant classement"
+        },
+        {
+          "table": "leaderboard_entries",
+          "field": "player_id",
+          "data_type": "uuid",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "players.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "FK joueur"
+        },
+        {
+          "table": "leaderboard_entries",
+          "field": "total_time_ms",
+          "data_type": "bigint",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "Temps total (ms)"
+        },
+        {
+          "table": "leaderboard_entries",
+          "field": "completed_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Fin de partie (UTC)"
+        },
+        {
+          "table": "achievements",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant succès"
+        },
+        {
+          "table": "achievements",
+          "field": "code",
+          "data_type": "varchar(32)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "YES",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Code unique"
+        },
+        {
+          "table": "achievements",
+          "field": "label",
+          "data_type": "varchar(120)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Libellé"
+        },
+        {
+          "table": "achievements",
+          "field": "criteria",
+          "data_type": "jsonb",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Critères de déblocage"
+        },
+        {
+          "table": "session_achievements",
+          "field": "session_id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "game_sessions.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "PK/FK session"
+        },
+        {
+          "table": "session_achievements",
+          "field": "achievement_id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "achievements.id",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "PK/FK succès"
+        },
+        {
+          "table": "audit_logs",
+          "field": "id",
+          "data_type": "uuid",
+          "PrimaryKey": "YES",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Identifiant log"
+        },
+        {
+          "table": "audit_logs",
+          "field": "actor",
+          "data_type": "varchar(64)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Origine: system|admin|player:{id}"
+        },
+        {
+          "table": "audit_logs",
+          "field": "action",
+          "data_type": "varchar(64)",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "",
+          "description": "Action ex: PUZZLE_VALIDATED"
+        },
+        {
+          "table": "audit_logs",
+          "field": "payload",
+          "data_type": "jsonb",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "YES",
+          "default": "",
+          "indexed": "",
+          "description": "Données associées"
+        },
+        {
+          "table": "audit_logs",
+          "field": "occurred_at",
+          "data_type": "datetime",
+          "PrimaryKey": "",
+          "ForeignKey_ref": "",
+          "unique": "",
+          "nullable": "NO",
+          "default": "",
+          "indexed": "YES",
+          "description": "Horodatage (UTC)"
+        }
+      ]
+    },
+    "relations": {
+      "header": [
+        "from",
+        "to",
+        "on_delete",
+        "description"
+      ],
+      "rows": [
+        [
+          "puzzles.story_video_id",
+          "story_videos.id",
+          "SET NULL",
+          "Associe une vidéo d'histoire à une énigme"
+        ],
+        [
+          "puzzles.next_puzzle_id",
+          "puzzles.id",
+          "SET NULL",
+          "Chaîne dirigée d'énigmes"
+        ],
+        [
+          "puzzle_assets.puzzle_id",
+          "puzzles.id",
+          "CASCADE",
+          "Assets liés à une énigme"
+        ],
+        [
+          "game_sessions.player_id",
+          "players.id",
+          "CASCADE",
+          "Sessions d'un joueur"
+        ],
+        [
+          "attempts.session_id",
+          "game_sessions.id",
+          "CASCADE",
+          "Tentatives d'une session"
+        ],
+        [
+          "attempts.puzzle_id",
+          "puzzles.id",
+          "CASCADE",
+          "Tentatives par énigme"
+        ],
+        [
+          "solutions.puzzle_id",
+          "puzzles.id",
+          "CASCADE",
+          "Solution unique par énigme"
+        ],
+        [
+          "hints.puzzle_id",
+          "puzzles.id",
+          "CASCADE",
+          "Indices d'une énigme"
+        ],
+        [
+          "leaderboard_entries.player_id",
+          "players.id",
+          "CASCADE",
+          "Classement par joueur"
+        ],
+        [
+          "session_achievements.session_id",
+          "game_sessions.id",
+          "CASCADE",
+          "Pivot session↔succès"
+        ],
+        [
+          "session_achievements.achievement_id",
+          "achievements.id",
+          "CASCADE",
+          "Pivot session↔succès"
+        ]
+      ],
+      "records": [
+        {
+          "from": "puzzles.story_video_id",
+          "to": "story_videos.id",
+          "on_delete": "SET NULL",
+          "description": "Associe une vidéo d'histoire à une énigme"
+        },
+        {
+          "from": "puzzles.next_puzzle_id",
+          "to": "puzzles.id",
+          "on_delete": "SET NULL",
+          "description": "Chaîne dirigée d'énigmes"
+        },
+        {
+          "from": "puzzle_assets.puzzle_id",
+          "to": "puzzles.id",
+          "on_delete": "CASCADE",
+          "description": "Assets liés à une énigme"
+        },
+        {
+          "from": "game_sessions.player_id",
+          "to": "players.id",
+          "on_delete": "CASCADE",
+          "description": "Sessions d'un joueur"
+        },
+        {
+          "from": "attempts.session_id",
+          "to": "game_sessions.id",
+          "on_delete": "CASCADE",
+          "description": "Tentatives d'une session"
+        },
+        {
+          "from": "attempts.puzzle_id",
+          "to": "puzzles.id",
+          "on_delete": "CASCADE",
+          "description": "Tentatives par énigme"
+        },
+        {
+          "from": "solutions.puzzle_id",
+          "to": "puzzles.id",
+          "on_delete": "CASCADE",
+          "description": "Solution unique par énigme"
+        },
+        {
+          "from": "hints.puzzle_id",
+          "to": "puzzles.id",
+          "on_delete": "CASCADE",
+          "description": "Indices d'une énigme"
+        },
+        {
+          "from": "leaderboard_entries.player_id",
+          "to": "players.id",
+          "on_delete": "CASCADE",
+          "description": "Classement par joueur"
+        },
+        {
+          "from": "session_achievements.session_id",
+          "to": "game_sessions.id",
+          "on_delete": "CASCADE",
+          "description": "Pivot session↔succès"
+        },
+        {
+          "from": "session_achievements.achievement_id",
+          "to": "achievements.id",
+          "on_delete": "CASCADE",
+          "description": "Pivot session↔succès"
+        }
+      ]
+    },
+    "enums": {
+      "header": [
+        "field",
+        "allowed_values"
+      ],
+      "rows": [
+        [
+          "puzzles.type",
+          "lock|input_text|image_interactive|sequence|drag_drop|combinaison|autre"
+        ],
+        [
+          "game_sessions.status",
+          "running|paused|finished|aborted"
+        ],
+        [
+          "puzzle_assets.kind",
+          "image|audio|video|json|sprite|tilemap"
+        ]
+      ],
+      "records": [
+        {
+          "field": "puzzles.type",
+          "allowed_values": "lock|input_text|image_interactive|sequence|drag_drop|combinaison|autre"
+        },
+        {
+          "field": "game_sessions.status",
+          "allowed_values": "running|paused|finished|aborted"
+        },
+        {
+          "field": "puzzle_assets.kind",
+          "allowed_values": "image|audio|video|json|sprite|tilemap"
+        }
+      ]
+    },
+    "indexes": {
+      "header": [
+        "table",
+        "columns",
+        "type",
+        "description"
+      ],
+      "rows": [
+        [
+          "players",
+          "nickname",
+          "UNIQUE",
+          "Unicité du pseudo"
+        ],
+        [
+          "players",
+          "email",
+          "UNIQUE",
+          "Unicité de l'email"
+        ],
+        [
+          "puzzles",
+          "code",
+          "UNIQUE",
+          "Identifiant énigme unique"
+        ],
+        [
+          "puzzles",
+          "order_index",
+          "UNIQUE",
+          "Ordre unique"
+        ],
+        [
+          "puzzle_assets",
+          "puzzle_id",
+          "INDEX",
+          "Recherche par énigme"
+        ],
+        [
+          "game_sessions",
+          "player_id",
+          "INDEX",
+          "Sessions par joueur"
+        ],
+        [
+          "game_sessions",
+          "session_code",
+          "UNIQUE",
+          "Code de session"
+        ],
+        [
+          "attempts",
+          "session_id,puzzle_id,attempted_at",
+          "INDEX",
+          "Historique par session/énigme"
+        ],
+        [
+          "solutions",
+          "puzzle_id",
+          "UNIQUE",
+          "Une solution par énigme"
+        ],
+        [
+          "hints",
+          "puzzle_id",
+          "INDEX",
+          "Indices par énigme"
+        ],
+        [
+          "leaderboard_entries",
+          "player_id",
+          "INDEX",
+          "Classement par joueur"
+        ],
+        [
+          "leaderboard_entries",
+          "total_time_ms",
+          "INDEX",
+          "Tri par temps"
+        ],
+        [
+          "audit_logs",
+          "occurred_at",
+          "INDEX",
+          "Logs récents d'abord"
+        ]
+      ],
+      "records": [
+        {
+          "table": "players",
+          "columns": "nickname",
+          "type": "UNIQUE",
+          "description": "Unicité du pseudo"
+        },
+        {
+          "table": "players",
+          "columns": "email",
+          "type": "UNIQUE",
+          "description": "Unicité de l'email"
+        },
+        {
+          "table": "puzzles",
+          "columns": "code",
+          "type": "UNIQUE",
+          "description": "Identifiant énigme unique"
+        },
+        {
+          "table": "puzzles",
+          "columns": "order_index",
+          "type": "UNIQUE",
+          "description": "Ordre unique"
+        },
+        {
+          "table": "puzzle_assets",
+          "columns": "puzzle_id",
+          "type": "INDEX",
+          "description": "Recherche par énigme"
+        },
+        {
+          "table": "game_sessions",
+          "columns": "player_id",
+          "type": "INDEX",
+          "description": "Sessions par joueur"
+        },
+        {
+          "table": "game_sessions",
+          "columns": "session_code",
+          "type": "UNIQUE",
+          "description": "Code de session"
+        },
+        {
+          "table": "attempts",
+          "columns": "session_id,puzzle_id,attempted_at",
+          "type": "INDEX",
+          "description": "Historique par session/énigme"
+        },
+        {
+          "table": "solutions",
+          "columns": "puzzle_id",
+          "type": "UNIQUE",
+          "description": "Une solution par énigme"
+        },
+        {
+          "table": "hints",
+          "columns": "puzzle_id",
+          "type": "INDEX",
+          "description": "Indices par énigme"
+        },
+        {
+          "table": "leaderboard_entries",
+          "columns": "player_id",
+          "type": "INDEX",
+          "description": "Classement par joueur"
+        },
+        {
+          "table": "leaderboard_entries",
+          "columns": "total_time_ms",
+          "type": "INDEX",
+          "description": "Tri par temps"
+        },
+        {
+          "table": "audit_logs",
+          "columns": "occurred_at",
+          "type": "INDEX",
+          "description": "Logs récents d'abord"
+        }
+      ]
+    },
+    "meta": {
+      "header": [
+        "document",
+        "version",
+        "generated_at",
+        "notes"
+      ],
+      "rows": [
+        [
+          "Dictionnaire de données — Escape Game",
+          "1.0",
+          "2025-09-01T09:54:36Z",
+          "Horodatages en UTC. UUID v4 partout. Les champs JSON sont stockés en jsonb côté PostgreSQL."
+        ]
+      ],
+      "records": [
+        {
+          "document": "Dictionnaire de données — Escape Game",
+          "version": "1.0",
+          "generated_at": "2025-09-01T09:54:36Z",
+          "notes": "Horodatages en UTC. UUID v4 partout. Les champs JSON sont stockés en jsonb côté PostgreSQL."
+        }
+      ]
+    }
+  }
+}

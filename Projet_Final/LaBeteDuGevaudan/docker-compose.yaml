@@ -1,0 +1,56 @@
+services:
+  db:
+    image: mariadb:10.6
+    container_name: escape_db
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: escape_db
+      MARIADB_USER: freki
+      MARIADB_PASSWORD: H3l105!!
+      MARIADB_ROOT_PASSWORD: H3l1052023!!
+      TZ: Europe/Paris
+    ports:
+      - "3304:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u$$MYSQL_USER -p$$MYSQL_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  php:
+    build:
+      context: ./php
+    container_name: escape_php
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_ENV: prod
+      DB_HOST: db
+      DB_NAME: escape_db
+      DB_USER: freki
+      DB_PASS: H3l105!!
+      TZ: Europe/Paris
+    ports:
+      - "8087:80"
+    volumes:
+      - ./public:/var/www/html:rw
+      - ./api:/var/www/html/api:rw
+      - ./php/apache.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+
+# tomcat:
+#   build:
+#     context: ./tomcat
+#   container_name: escape_tomcat
+#   restart: unless-stopped
+#   environment:
+#     TZ: Europe/Paris
+#   ports:
+#     - "8081:8080"
+
+volumes:
+  db_data:

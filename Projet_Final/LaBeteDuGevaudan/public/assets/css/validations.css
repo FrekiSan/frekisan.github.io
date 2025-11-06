@@ -1,0 +1,66 @@
+:root{
+  --bg:#0f1115; --panel:#171a21; --muted:#202532; --accent:#7dd3fc; --ok:#22c55e; --warn:#f59e0b; --danger:#ef4444; --text:#e5e7eb; --sub:#a1a1aa;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+  --gap: 14px;
+  --pad: 16px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+* { box-sizing: border-box }
+html, body { height:100% }
+body{
+  margin:0; background:linear-gradient(180deg, #0b0e13, #0f1115 120%);
+  color:var(--text); font-family:var(--font);
+}
+.app-header, .app-footer{
+  width:100%; max-width:1200px; margin:0 auto; padding:14px var(--pad);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.app-header{ position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px);
+  background: rgba(15,17,21,.6); border-bottom:1px solid rgba(125,211,252,.08); z-index:20; }
+.brand{display:flex; align-items:center; gap:12px}
+.logo{width:36px; height:36px; border-radius:12px; background:#111; object-fit:cover; box-shadow:var(--shadow)}
+.title{font-weight:700; letter-spacing:.2px}
+.top-nav{display:flex; align-items:center; gap:10px; color:var(--sub)}
+.link{color:var(--text); opacity:.85; text-decoration:none}
+.link:hover{opacity:1}
+.timer{font-variant-numeric:tabular-nums; font-weight:700; color:var(--accent)}
+
+.container{ width:100%; max-width:1200px; margin:22px auto; padding:0 var(--pad); }
+.toolbar{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.filters, .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.btn{
+  background:var(--muted); color:var(--text); border:none; padding:10px 14px; border-radius:12px; cursor:pointer;
+  transition:transform .08s ease, background .2s ease; font-weight:600;
+}
+.btn:hover{ transform:translateY(-1px) }
+.btn:active{ transform:translateY(0) scale(.98) }
+.btn.primary{ background:linear-gradient(135deg, #0ea5e9, #22d3ee); color:#001018 }
+.btn.danger{ background:linear-gradient(135deg, #ef4444, #f97316); color:#1a0b0b }
+
+.progress-wrap{ display:flex; align-items:center; gap:12px; margin: 12px 0 20px }
+.progress-bar{ flex:1; background:#0b0d12; border:1px solid #1e2430; border-radius:999px; height:12px; overflow:hidden }
+.progress{ height:100%; width:0%; background:linear-gradient(90deg, #22c55e, #7dd3fc); transition:width .3s ease }
+.progress-stats{ display:flex; gap:8px; color:var(--sub) }
+
+.grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:var(--gap) }
+.card{
+  background:var(--panel); border:1px solid #1d2230; border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; gap:10px; position:relative;
+}
+.card .head{ display:flex; align-items:center; gap:10px; justify-content:space-between }
+.badge{ font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid #2a3040; color:var(--sub); background:#12151c }
+.badge.ok{ color:#052a15; background:linear-gradient(135deg,#22c55e,#7dd3fc); border-color:transparent; font-weight:700 }
+.badge.todo{ color:#3b82f6 }
+.badge.progress{ color:#f59e0b }
+.card h3{ margin:0; font-size:16px }
+.meta{ color:var(--sub); font-size:12px; display:flex; gap:12px; flex-wrap:wrap }
+.card .actions{ display:flex; gap:8px; flex-wrap:wrap }
+.card .actions .btn{ padding:8px 10px; border-radius:10px; font-size:13px }
+a.btn{ text-decoration:none; display:inline-block }
+
+.app-footer{ opacity:.7; justify-content:center; padding-bottom:24px }
+@media (max-width: 560px){
+  .title{ display:none }
+  .top-nav .divider{ display:none }
+}

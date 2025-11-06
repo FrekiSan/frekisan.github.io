@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Énigme 9</title>
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+
+<style>
+.spoiler-wrap{
+  position:relative;
+  display:inline-block;
+  max-width:100%;
+}
+.spoiler-wrap img.spoilered{
+  filter:blur(14px) brightness(0.7);
+  transition:filter .25s ease;
+  cursor:pointer;
+}
+.spoiler-wrap.revealed img.spoilered{
+  filter:none;
+}
+.spoiler-badge{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  padding:.5rem .75rem;
+  background:rgba(0,0,0,.7);
+  color:#fff;
+  border-radius:.5rem;
+  font-size:.9rem;
+  user-select:none;
+  pointer-events:none;
+}
+.spoiler-hint{
+  position:absolute;
+  right:.5rem;bottom:.5rem;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  padding:.25rem .5rem;
+  border-radius:.375rem;
+  font-size:.75rem;
+  pointer-events:none;
+  }
+</style>
+<script>
+(function(){
+  function shouldSpoiler(img){
+    if (!img) return false;
+    if (img.dataset && (img.dataset.nospoiler==="1" || img.dataset.nospoiler==="true")) return false;
+    var cls = (img.className||"").toLowerCase();
+    if (/(logo|favicon|icon)/.test(cls)) return false;
+    var src = (img.getAttribute("src")||"").toLowerCase();
+    if (/(logo|favicon|icon|header)/.test(src)) return false;
+    // Skip very small images (likely UI)
+    if (img.naturalWidth && img.naturalWidth < 64) return false;
+    // If inside header/nav/footer
+    var el = img;
+    while (el){
+      var tag = (el.tagName||"").toLowerCase();
+      var id = (el.id||"").toLowerCase();
+      var c = (el.className||"").toLowerCase();
+      if (/(header|nav|footer)/.test(tag) || /(header|nav|footer)/.test(id) || /(header|nav|footer)/.test(c)) return false;
+      el = el.parentElement;
+    }
+    return true;
+  }
+  function wrapSpoiler(img){
+    if (img.closest('.spoiler-wrap')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'spoiler-wrap';
+    var badge = document.createElement('div');
+    badge.className = 'spoiler-badge';
+    badge.textContent = 'Image masquée';
+    var hint = document.createElement('div');
+    hint.className = 'spoiler-hint';
+    hint.textContent = 'Cliquer pour révéler';
+    img.classList.add('spoilered');
+    img.parentNode.insertBefore(wrap, img);
+    wrap.appendChild(img);
+    wrap.appendChild(badge);
+    wrap.appendChild(hint);
+    wrap.addEventListener('click', function(){
+      wrap.classList.toggle('revealed');
+    });
+  }
+  function initSpoilers(){
+    var imgs = Array.prototype.slice.call(document.images || []);
+    imgs.forEach(function(img){
+      if (shouldSpoiler(img)) {
+        if (img.complete) {
+          wrapSpoiler(img);
+        } else {
+          img.addEventListener('load', function(){ wrapSpoiler(img); }, {once:true});
+        }
+      }
+    });
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initSpoilers);
+  } else {
+    initSpoilers();
+  }
+})();
+</script>
+
+</head>
+<body>
+  <header>
+  <img src="assets/img/logo.png" alt="logo" class="logo">
+  <nav class="header-links">
+    <a href="#" id="openLogin" data-auth="guest" onclick="openModal('loginModal')">Se connecter</a>
+    <a href="#" id="logoutBtn" data-auth="logged" style="display:none;">Se déconnecter</a>
+    <a href="#" id="openContact">Contact</a>
+    <a href="#" id="openCredits">Crédits</a>
+    <a href="#" id="openClassement">Classement</a>
+  </nav>
+  <span id="timer" style="margin-left:12px;font-weight:bold;"></span>
+</header>
+
+  <h1>Énigme 9</h1>
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/KwTUga6c8dI?dark" allowfullscreen></iframe>
+</div>
+<p style="text-align:center;">Au cours du siège de <input type="text" id="input1" placeholder="O">,
+   revêtu de l'armure de <input type="text" id="input2" placeholder="o">,
+   j'ai vaincu <input type="text" id="input3" placeholder="°">.</p>
+<div style="text-align:center;">
+  <button onclick="validate()">Valider</button>
+  <div id="error" style="color:red;display:none;margin-top:10px;">Mauvaise réponse, réessayez.</div>
+</div>
+<div id="video" style="display:none;">
+  <iframe src="https://www.youtube.com/embed/w40LSeIJHWc" title="Vidéo Histoire 9" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<script>
+  function validate() {
+    const val1 = document.getElementById("input1").value.trim().toLowerCase();
+    const val2 = document.getElementById("input2").value.trim().toLowerCase();
+    const val3 = document.getElementById("input3").value.trim().toLowerCase();
+    if (val1 === "troie" && val2 === "achille" && val3 === "sarpedon") {
+      document.getElementById("error").style.display = "none";
+      document.getElementById("video").style.display = "block";
+      setTimeout(() => { const __v=document.getElementById("video");if(__v){__v.style.display="block";}
+setTimeout(()=>{ window.location.href = "enigme10.html"; }, 99000); }, 8000);
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+</script>
+
+  <footer>
+ <p>
+    <a href="https://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+            alt="Valid CSS!" />
+    </a>
+</p>
+</footer>
+
+<script src="assets/js/utilities.js" defer></script>
+<script src="assets/js/manager.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/classement.js" defer></script>
+<script src="assets/js/global_timer.js" defer></script>
+</body>
+</html>

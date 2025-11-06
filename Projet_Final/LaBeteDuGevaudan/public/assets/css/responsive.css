@@ -1,0 +1,99 @@
+/* =========================
+   RESPONSIVE.CSS
+   Gère l'adaptation du site sur tablettes et mobiles
+   ========================= */
+
+/* ----------- TABLETTES & PETITS ÉCRANS ----------- */
+@media screen and (max-width: 1024px) {
+  /* Réduction de la taille de police globale */
+  body {
+    font-size: 16px;
+  }
+
+  /* Header en colonne, centré */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Les vidéos prennent toute la largeur disponible */
+  iframe {
+    width: 100%;
+    height: auto !important;
+  }
+
+  /* Logo plus petit sur tablette */
+  .logo {
+    width: 120px;
+  }
+
+  /* Navigation verticale et centrée */
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  /* Champs de saisie et boutons du score en bloc et larges */
+  .score-entry input,
+  .score-entry button {
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+
+  /* Classement : chaque ligne prend presque toute la largeur */
+  .leaderboard li {
+    width: 90%;
+  }
+
+  /* Grille vidéo en 2 colonnes */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+}
+
+/* ----------- SMARTPHONES ----------- */
+@media screen and (max-width: 600px) {
+  /* Grille vidéo en 1 colonne */
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+  .video-grid iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
+
+  /* Titre plus petit */
+  h1 {
+    font-size: 1.5em;
+  }
+
+  /* Champs texte très larges */
+  input[type="text"] {
+  width: 90%;
+  max-width: 300px;
+  }
+
+  /* Boutons larges et espacés */
+  button {
+    width: 90%;
+    margin: 10px 0;
+    max-width: 30px;
+  }
+
+  /* Vidéos adaptatives */
+  iframe {
+    height: auto !important;
+  }
+
+  /* Header en colonne avec un peu d'espace */
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
