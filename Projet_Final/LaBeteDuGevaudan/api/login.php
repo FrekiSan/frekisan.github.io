@@ -8,7 +8,7 @@ $password = $in['password'] ?? '';
 
 
 $stmt = $pdo->prepare('SELECT id, password_hash FROM users WHERE username=? OR email=?');
-$stmt->execute([$username, $username]);
+$stmt->execute([$username, $email]);
 $u = $stmt->fetch();
 
 if (!$u || !password_verify($password, $u['password_hash'])) {
